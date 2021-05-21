@@ -1,0 +1,22 @@
+{
+    "files.associations": {
+        "stdio.h": "c",
+        "divers.h": "c",
+        "game.h": "c",
+        "constante.h": "c",
+        "sdl_ttf.h": "c",
+        "sdl.h": "c",
+        "sdl_main.h": "c",
+        "sdl_stdinc.h": "c",
+        "player.h": "c",
+        "limits": "c",
+        "bool.h": "c",
+        "cstdio": "c",
+        "grille.h": "c",
+        "graphic.h": "c",
+        "button.h": "c",
+        "ia.h": "c",
+        "setingfile.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
+}

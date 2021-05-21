@@ -1,0 +1,10 @@
+#ifndef DIVERS_H_INCLUDED
+#define DIVERS_H_INCLUDED
+
+#include <SDL2/SDL.h>
+#include "../Game/Game.h"
+void changeColor( Game* game);
+SDL_Color rgba_to_color( const unsigned char r, const unsigned char g, const unsigned char b, const unsigned char a);
+void Version(void);
+
+#endif // !DIVERS_H_INCLUDED

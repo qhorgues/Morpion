@@ -1,0 +1,55 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: gcc.exe générer le fichier actif",
+            "command": "C:\\Program Files\\mingw64\\bin\\gcc.exe",
+            "args": [
+                //"-O3",
+                "-Wall",
+                "-Wextra",
+                "-Werror",
+                "-pedantic",
+                "-std=c18",
+                "-g",
+                "assets/Images/Logo.o",
+                "src/main.c",
+                "src/Test/Test.c",
+                "src/bool/bool.c",
+                "src/Image/Image.c",
+                "src/Text/Text.c",
+                "src/SetingFile/SetingFile.c",
+                "src/Game/Game.c",
+                "src/Divers/*.c",
+                "src/Player/Player.c",
+                "src/Grille/Grille.c",
+                "src/Graphic/*.c",
+                "src/IA/*.c",
+                "src/Button/Button.c",
+                "-o",
+                "${workspaceFolder}\\bin\\Morpion.exe",
+                "-L",
+                "lib",
+                "-I",
+                "include",
+                "-lSDL2main",
+                "-lSDL2",
+                "-lSDL2_ttf",
+                "-lSDL2_image",
+                // "-mwindows",
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Tâche générée par le débogueur."
+        }
+    ],
+    "version": "2.0.0"
+}
