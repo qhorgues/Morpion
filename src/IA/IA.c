@@ -108,7 +108,6 @@ bool testWin(Game *game)
             else if (game->Niveau < 1)
                 game->Niveau = 1;
         }
-        printf("Niveau : %d\n", game->Niveau);
         update(game);
         return true;
     }

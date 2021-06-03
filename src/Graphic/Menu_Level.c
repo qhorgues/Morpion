@@ -48,17 +48,17 @@ void update_in_menu_level( Game* game) {
     printButton( game->window, game->renderer, game->tabButton[BUTTON_HARD], SIZE_X/2 - game->tabButton[BUTTON_HARD]->rectButton.w/2, game->tabButton[BUTTON_MEDIUM]->rectButton.y
      + game->tabButton[BUTTON_MEDIUM]->rectButton.h + 20);
 
-    game->tabButton[BUTTON_RETURN] = allocButtonText( game->window, game->renderer, SIZE_X/3, SIZE_Y/8, "RETOUR", calibri, white, blue);
+    game->tabButton[BUTTON_RETURN] = allocButtonText( game->window, game->renderer, SIZE_X/2.2, SIZE_Y/8, "RETOUR", calibri, white, blue);
     printButton( game->window, game->renderer, game->tabButton[BUTTON_RETURN], game->tabButton[BUTTON_HARD]->rectButton.x, game->tabButton[BUTTON_HARD]->rectButton.y
      + game->tabButton[BUTTON_HARD]->rectButton.h + 20);
 
     if (!game->NivAuto) {
-        game->tabButton[BUTTON_AUTO] = allocButtonText(game->window, game->renderer, SIZE_X/4, SIZE_Y/8, "AUTO", calibri, white, blue);
+        game->tabButton[BUTTON_AUTO] = allocButtonText(game->window, game->renderer, 103, SIZE_Y/8, "AUTO", calibri, white, blue);
         printButton(game->window, game->renderer, game->tabButton[BUTTON_AUTO], game->tabButton[BUTTON_RETURN]->rectButton.x + game->tabButton[BUTTON_RETURN]->rectButton.w + 10,
         game->tabButton[BUTTON_HARD]->rectButton.y + game->tabButton[BUTTON_HARD]->rectButton.h + 20);
     } else {
         const SDL_Color green = { 0, 157, 12, SDL_ALPHA_OPAQUE};
-        game->tabButton[BUTTON_AUTO] = allocButtonText(game->window, game->renderer, SIZE_X/4, SIZE_Y/8, "AUTO", calibri, white, green);
+        game->tabButton[BUTTON_AUTO] = allocButtonText(game->window, game->renderer, 103, SIZE_Y/8, "AUTO", calibri, white, green);
         printButton(game->window, game->renderer, game->tabButton[BUTTON_AUTO], game->tabButton[BUTTON_RETURN]->rectButton.x + game->tabButton[BUTTON_RETURN]->rectButton.w + 10,
         game->tabButton[BUTTON_HARD]->rectButton.y + game->tabButton[BUTTON_HARD]->rectButton.h + 20);
     }
@@ -129,13 +129,13 @@ void clickLevel(Game* game, const unsigned short clickX, const unsigned short cl
         const SDL_Color white = { 255, 255, 255, SDL_ALPHA_OPAQUE};
         if (game->NivAuto) {
             const SDL_Color blue = BLUE;
-            game->tabButton[BUTTON_AUTO] = allocButtonText(game->window, game->renderer, SIZE_X/4, SIZE_Y/8, "AUTO", calibri, white, blue);
+            game->tabButton[BUTTON_AUTO] = allocButtonText(game->window, game->renderer, 103, SIZE_Y/8, "AUTO", calibri, white, blue);
             printButton(game->window, game->renderer, game->tabButton[BUTTON_AUTO], game->tabButton[BUTTON_RETURN]->rectButton.x + game->tabButton[BUTTON_RETURN]->rectButton.w + 10,
             game->tabButton[BUTTON_HARD]->rectButton.y + game->tabButton[BUTTON_HARD]->rectButton.h + 20);
             game->NivAuto = false;
         } else {
             const SDL_Color green = { 0, 157, 12, SDL_ALPHA_OPAQUE};
-            game->tabButton[BUTTON_AUTO] = allocButtonText(game->window, game->renderer, SIZE_X/4, SIZE_Y/8, "AUTO", calibri, white, green);
+            game->tabButton[BUTTON_AUTO] = allocButtonText(game->window, game->renderer, 103, SIZE_Y/8, "AUTO", calibri, white, green);
             printButton(game->window, game->renderer, game->tabButton[BUTTON_AUTO], game->tabButton[BUTTON_RETURN]->rectButton.x + game->tabButton[BUTTON_RETURN]->rectButton.w + 10,
             game->tabButton[BUTTON_HARD]->rectButton.y + game->tabButton[BUTTON_HARD]->rectButton.h + 20);
             game->NivAuto = true;

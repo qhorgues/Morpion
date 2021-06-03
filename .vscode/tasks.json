@@ -12,7 +12,7 @@
                 "-pedantic",
                 "-std=c18",
                 "-g",
-                "assets/Images/Logo.o",
+                "src/Logo.o",
                 "src/main.c",
                 "src/Test/Test.c",
                 "src/bool/bool.c",
@@ -36,7 +36,7 @@
                 "-lSDL2",
                 "-lSDL2_ttf",
                 "-lSDL2_image",
-                // "-mwindows",
+                "-mwindows",
             ],
             "options": {
                 "cwd": "${workspaceFolder}"

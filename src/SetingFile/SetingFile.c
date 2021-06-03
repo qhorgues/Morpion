@@ -19,6 +19,8 @@
 
 #include <windows.h>
 #include <string.h>
+#include <sys/stat.h>
+
 
 
 /**
@@ -74,17 +76,17 @@ void saveSeting(SDL_Window* window, SDL_Renderer* renderer, const char* PATH, co
 const char* createFolder(void) {
     const size_t sizeFolder = 21 + strlen(getenv("APPDATA"));
     
-    char * folder = malloc(sizeFolder * sizeof(char));
-    folder = strcat(getenv("APPDATA"), "\\..\\LocalLow\\Morpion");
+    char folder[sizeFolder];
+    strcpy(folder, getenv("APPDATA"));
+    strcat(folder, "\\..\\LocalLow\\Morpion");
 
-    char command[sizeFolder +12];
-    strcpy(command, "mkdir ");
-    strcat(command, folder);
-    system(command);
+    mkdir(folder);
+    char command[sizeFolder +5];
+    strcpy(command, folder);
     strcat(command, "\\save");
-    command[sizeFolder+12] = '\0';
-    system(command);
+    mkdir(command);
 
     const char * folderSave = strcat(folder, "\\save");
+
     return folderSave;
 }
