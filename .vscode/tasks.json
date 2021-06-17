@@ -5,13 +5,13 @@
             "label": "C/C++: gcc.exe générer le fichier actif",
             "command": "C:\\Program Files\\mingw64\\bin\\gcc.exe",
             "args": [
-                //"-O3",
+                "-O3",
                 "-Wall",
                 "-Wextra",
                 "-Werror",
                 "-pedantic",
                 "-std=c18",
-                "-g",
+                //"-g",
                 "src/Logo.o",
                 "src/main.c",
                 "src/Test/Test.c",
@@ -36,7 +36,7 @@
                 "-lSDL2",
                 "-lSDL2_ttf",
                 "-lSDL2_image",
-                //"-mwindows",
+                "-mwindows",
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
