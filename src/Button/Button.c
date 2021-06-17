@@ -1,7 +1,7 @@
 #include "Button.h"
 #include "../Test/Test.h"
 
-Button* allocButtonText(SDL_Window* window, SDL_Renderer* renderer, const uint_fast16_t w, const signed int_fast16_t h, const char * text, TTF_Font * font, const SDL_Color colorText, const SDL_Color back) {
+Button* allocButtonText(SDL_Window* window, SDL_Renderer* renderer, const uint_fast16_t w, const int_fast16_t h, const char * text, TTF_Font * font, const SDL_Color colorText, const SDL_Color back) {
     Button* bouton = malloc(sizeof(Button));
     Test( window, renderer, ERROR, bouton == NULL, "malloc", __FILE__, __LINE__);
     loadButtonText( window, renderer, w, h, text, font, bouton, colorText, back);

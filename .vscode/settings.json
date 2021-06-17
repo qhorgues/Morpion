@@ -18,7 +18,9 @@
         "ia.h": "c",
         "setingfile.h": "c",
         "stdint.h": "c",
-        "stdint-gcc.h": "c"
+        "stdint-gcc.h": "c",
+        "winddi.h": "c",
+        "errno.h": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

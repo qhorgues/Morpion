@@ -22,7 +22,7 @@
  * \param renderer Un pointeur sur le rendue
  * \param codeTest Le code d'erreur a renvoyer
  */
-void Quit(SDL_Window* window, SDL_Renderer* renderer, const int_fast32_t codeTest) {
+static void Quit(SDL_Window* window, SDL_Renderer* renderer, const int_fast32_t codeTest) {
     if (renderer != NULL) {
         SDL_DestroyRenderer(renderer); // On detruit le rendue si il est non NULL
     }

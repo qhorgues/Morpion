@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include "bool.h"
 #include <math.h>
+#include <stdint.h>
+
 typedef uint_fast8_t tabBool;
 typedef uint_fast32_t long_tabBool;
 
-int_fast32_t powi(const int_fast32_t value, int_fast32_t power)
+static int_fast32_t powi(const int_fast32_t value, int_fast32_t power)
 {
     if (power >= 0)
     {

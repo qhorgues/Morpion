@@ -20,9 +20,9 @@
 
 #undef main
 
-int_fast32_t main(void)
+int main(void)
 {
-    const char * PATH = createFolder();
+    const char* PATH = createFolder();
     Version();
 
     Test( NULL, NULL, FATAL_ERROR, SDL_Init(SDL_INIT_EVENTS) != 0, "SDL_Init", __FILE__, __LINE__); // on charge la SDL

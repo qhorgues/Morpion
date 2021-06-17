@@ -1,7 +1,7 @@
 #include "IA.h"
 #include "../constante.h"
 
-int_fast32_t testScore(int_fast32_t score, int_fast32_t maxScore) {
+static int_fast32_t testScore(int_fast32_t score, int_fast32_t maxScore) {
     if (score == 3) {  
         score = 100;
     }

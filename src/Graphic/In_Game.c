@@ -11,7 +11,7 @@
  * \param nb Un nombre
  * \return le nombre de caractere du nombre
  */
-size_t intLen(int_fast32_t nb) {
+static size_t intLen(int_fast32_t nb) {
     size_t count = 1;
     while (nb > 1) {
         nb /= 10;
@@ -30,7 +30,7 @@ size_t intLen(int_fast32_t nb) {
  * 
  * \return Une structure Text
  */
-Text createTextScore( const Game* game, TTF_Font* font, const char* txt, const int_fast32_t score) {
+static Text createTextScore( const Game* game, TTF_Font* font, const char* txt, const int_fast32_t score) {
     
     size_t lenScore = strlen(txt) + 3 + intLen(score);
     char* strScore = malloc( (lenScore + 1) * sizeof(char));

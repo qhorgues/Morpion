@@ -12,8 +12,6 @@
 #include "../Graphic/Graphic.h"
 #include "../Button/Button.h"
 
-const char * addstr(const char* str1, const char* str2);
-
 /**
  * \brief Initialisation de la structure du jeu
  * 
@@ -39,7 +37,7 @@ Game initGame(const char * PATH_SaveFolder) {
     
     game.color = rgba_to_color( 0, 0, 0, SDL_ALPHA_OPAQUE);
     game.background = rgba_to_color( 255, 255, 255, SDL_ALPHA_OPAQUE);
-    loadSeting(game.window, game.renderer, addstr(PATH_SaveFolder, "\\Seting.bin"), &game.color, &game.background);
+    loadSeting(game.window, game.renderer, strcat( strdup(PATH_SaveFolder), "\\Seting.bin"), &game.color, &game.background);
  
     game.boolMenu = false;
     game.boolMenu = set_tabBool(game.boolMenu, MENU, true);
@@ -62,7 +60,7 @@ Game initGame(const char * PATH_SaveFolder) {
  * \param game 
  */
 void freeGame( Game* game, const char * PATH_SaveFolder) {
-    saveSeting(game->window, game->renderer, addstr(PATH_SaveFolder, "\\Seting.bin"), game->color, game->background);
+    saveSeting(game->window, game->renderer, strcat( strdup(PATH_SaveFolder), "\\Seting.bin"), game->color, game->background);
 
     freePlayer(&game->player1);
     freePlayer(&game->player2);
@@ -132,16 +130,4 @@ bool getClick( Game* game, const uint_fast16_t clickX, const uint_fast16_t click
         clickLevel(game, clickX, clickY);
     }
     return false;
-}
-
-const char * addstr(const char* str1, const char* str2) {
-    size_t sizeStr1 = strlen(str1);
-    size_t sizeStr2 = strlen(str2);
-    char * str = malloc( (sizeStr1 + sizeStr2 + 1)*sizeof(char) );
-    if (str == NULL) {
-        exit(EXIT_FAILURE);
-    }
-    strcpy(str, str1);
-    strcat(str, str2);
-    return str;
 }

@@ -67,7 +67,7 @@ void update_in_menu_level( Game* game) {
     TTF_Quit();
 }
 
-void freebuttonLevel(Game* game) {
+static void freebuttonLevel(Game* game) {
     freeButton( game->window, game->renderer, game->tabButton[BUTTON_EASY]);
     free(game->tabButton[BUTTON_EASY]);
     game->tabButton[BUTTON_EASY] = NULL;
@@ -85,7 +85,7 @@ void freebuttonLevel(Game* game) {
     game->tabButton[BUTTON_AUTO] = NULL;
 }
 
-void clickButtonLevel(Game* game) {
+static void clickButtonLevel(Game* game) {
     freebuttonLevel(game);
     game->boolMenu = set_tabBool(game->boolMenu, MENU_LEVEL, false);
     game->boolMenu = set_tabBool(game->boolMenu, IN_GAME, true);
