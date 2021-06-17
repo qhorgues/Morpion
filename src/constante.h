@@ -12,6 +12,8 @@
 #ifndef CONSTANTE_H_INCLUDED
 #define CONSTANTE_H_INCLUDED
 
+#include <stdint.h>
+
 #define SIZE_X 360
 #define SIZE_Y 480
 #define LEN_GRILLE 3

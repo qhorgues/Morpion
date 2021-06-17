@@ -20,7 +20,7 @@
 
 #undef main
 
-int main(void)
+int_fast32_t main(void)
 {
     const char * PATH = createFolder();
     Version();

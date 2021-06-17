@@ -23,13 +23,13 @@ typedef struct Player
     char * Name;
 
     // 1 Octet
-    signed char ID;
-    unsigned char score;
+    int_fast8_t ID;
+    uint_fast8_t score;
 } Player;
 
 #include "../Game/Game.h"
 
-void InitPlayer( const Game* game, Player* player, const char ID, const char * Name, const unsigned char Score);
+void InitPlayer( const Game* game, Player* player, const char ID, const char * Name, const uint_fast8_t Score);
 void changeName( const Game* game, Player* player, const char * Name);
 void freePlayer(Player* player);
 

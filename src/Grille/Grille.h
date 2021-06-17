@@ -3,10 +3,10 @@
 
 #include "../Game/Game.h"
 
-bool grilleVide(signed char (*grille)[LEN_GRILLE]);
-bool grillePlein(signed char (*grille)[LEN_GRILLE]);
-void resetGrille(signed char (*grille)[LEN_GRILLE]);
-void printGrille( Game* game, const unsigned char w);
-bool addGrille( Game* game, const unsigned short clickX, const unsigned short clickY);
+bool grilleVide(int_fast8_t (*grille)[LEN_GRILLE]);
+bool grillePlein(int_fast8_t (*grille)[LEN_GRILLE]);
+void resetGrille(int_fast8_t (*grille)[LEN_GRILLE]);
+void printGrille( Game* game, const uint_fast8_t w);
+bool addGrille( Game* game, const uint_fast16_t clickX, const uint_fast16_t clickY);
 
 #endif // !GRILLE_H_INCLUDED

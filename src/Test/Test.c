@@ -22,7 +22,7 @@
  * \param renderer Un pointeur sur le rendue
  * \param codeTest Le code d'erreur a renvoyer
  */
-void Quit(SDL_Window* window, SDL_Renderer* renderer, const int codeTest) {
+void Quit(SDL_Window* window, SDL_Renderer* renderer, const int_fast32_t codeTest) {
     if (renderer != NULL) {
         SDL_DestroyRenderer(renderer); // On detruit le rendue si il est non NULL
     }
@@ -44,7 +44,7 @@ void Quit(SDL_Window* window, SDL_Renderer* renderer, const int codeTest) {
  * \param file Le fichier du teste, mettre __FILE__
  * \param line La ligne du teste mettre __LINE__
  */
-void Test(SDL_Window* window, SDL_Renderer* renderer, const int Priority, const bool condition, const char* message, const char* file, const int line) {
+void Test(SDL_Window* window, SDL_Renderer* renderer, const int_fast32_t Priority, const bool condition, const char* message, const char* file, const int_fast32_t line) {
     // priority 1 for Warning 2 for Test, 3 for Fatal Test
     if (condition) {
         if (Priority == 1) {

@@ -19,11 +19,11 @@
  * \return true 
  * \return false 
  */
-bool grilleVide(signed char (*grille)[LEN_GRILLE])
+bool grilleVide(int_fast8_t (*grille)[LEN_GRILLE])
 {
-    for (int i = 0; i < LEN_GRILLE; i++)
+    for (int_fast32_t i = 0; i < LEN_GRILLE; i++)
     {
-        for (int j = 0; j < LEN_GRILLE; j++)
+        for (int_fast32_t j = 0; j < LEN_GRILLE; j++)
         {
             if (grille[i][j] != 0)
             {
@@ -42,11 +42,11 @@ bool grilleVide(signed char (*grille)[LEN_GRILLE])
  * \return true 
  * \return false 
  */
-bool grillePlein(signed char (*grille)[LEN_GRILLE])
+bool grillePlein(int_fast8_t (*grille)[LEN_GRILLE])
 {
-    for (int i = 0; i < LEN_GRILLE; i++)
+    for (int_fast32_t i = 0; i < LEN_GRILLE; i++)
     {
-        for (int j = 0; j < LEN_GRILLE; j++)
+        for (int_fast32_t j = 0; j < LEN_GRILLE; j++)
         {
             if (grille[i][j] == 0)
             {
@@ -62,11 +62,11 @@ bool grillePlein(signed char (*grille)[LEN_GRILLE])
  * 
  * \param grille la grille a reinitiliser
  */
-void resetGrille(signed char (*grille)[LEN_GRILLE])
+void resetGrille(int_fast8_t (*grille)[LEN_GRILLE])
 {
-    for (int i = 0; i < LEN_GRILLE; i++)
+    for (int_fast32_t i = 0; i < LEN_GRILLE; i++)
     {
-        for (int j = 0; j < LEN_GRILLE; j++)
+        for (int_fast32_t j = 0; j < LEN_GRILLE; j++)
         {
             grille[j][i] = 0;
         }
@@ -79,7 +79,7 @@ void resetGrille(signed char (*grille)[LEN_GRILLE])
  * \param game Un pointeur sur la structure du jeu
  * \param w La largeur des lignes de la grille
  */
-void printGrille( Game *game, const unsigned char w)
+void printGrille( Game *game, const uint_fast8_t w)
 {
     Test(game->window, game->renderer, WARNING,
          SDL_SetRenderDrawColor(game->renderer, game->background.r, game->background.g, game->background.b, game->background.a),
@@ -91,7 +91,7 @@ void printGrille( Game *game, const unsigned char w)
          SDL_SetRenderDrawColor(game->renderer, game->color.r, game->color.g, game->color.b, game->color.a),
          "SDL_SetRenderDrawColor", __FILE__, __LINE__ - 1);
 
-    for (int i = 1; i < 3; i++)
+    for (int_fast32_t i = 1; i < 3; i++)
     {
         SDL_Rect ligne;
         ligne.x = i * (SIZE_X / 3) - (w / 2);
@@ -100,7 +100,7 @@ void printGrille( Game *game, const unsigned char w)
         ligne.w = w;
         Test(game->window, game->renderer, WARNING, SDL_RenderFillRect(game->renderer, &ligne) != 0, "SDL_RenderFillRect", __FILE__, __LINE__);
     }
-    for (int i = 1; i < 3; i++)
+    for (int_fast32_t i = 1; i < 3; i++)
     {
         SDL_Rect ligne;
         ligne.x = 0;
@@ -119,9 +119,9 @@ void printGrille( Game *game, const unsigned char w)
 
     Test(game->window, game->renderer, FATAL_ERROR, IMG_Init(IMG_INIT_PNG) == 0, "IMG_Init", __FILE__, __LINE__);
 
-    for (int i = 0; i < LEN_GRILLE; i++)
+    for (int_fast32_t i = 0; i < LEN_GRILLE; i++)
     {
-        for (int j = 0; j < LEN_GRILLE; j++)
+        for (int_fast32_t j = 0; j < LEN_GRILLE; j++)
         {
             if (game->grille[i][j] == 1)
             {
@@ -171,12 +171,12 @@ void printGrille( Game *game, const unsigned char w)
  * 
  * \return retourne 0 si ca marche sinon 1
  */
-bool addGrille( Game *game, const unsigned short clickX, const unsigned short clickY)
+bool addGrille( Game *game, const uint_fast16_t clickX, const uint_fast16_t clickY)
 {
     if (clickY >= OF_SET && clickY <= SIZE_Y - OF_SET)
     {
-        unsigned short y = (clickY - OF_SET) / (SIZE_X / 3);
-        unsigned short x = clickX / (SIZE_X / 3);
+        uint_fast16_t y = (clickY - OF_SET) / (SIZE_X / 3);
+        uint_fast16_t x = clickX / (SIZE_X / 3);
         if (game->grille[y][x] == 0)
         {
                 game->grille[y][x] = game->playerActif;

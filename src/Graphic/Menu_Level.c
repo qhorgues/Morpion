@@ -6,7 +6,7 @@
 
 void update_in_menu_level( Game* game) {
 
-    for(int i = 0; i < N_BUTTON; i++) {
+    for(int_fast32_t i = 0; i < N_BUTTON; i++) {
         if (game->tabButton[i] != NULL) {
             freeButton(game->window, game->renderer, game->tabButton[i]);
             free(game->tabButton[i]);
@@ -97,7 +97,7 @@ void clickButtonLevel(Game* game) {
     update( game);
 }
 
-void clickLevel(Game* game, const unsigned short clickX, const unsigned short clickY) {
+void clickLevel(Game* game, const uint_fast16_t clickX, const uint_fast16_t clickY) {
     if (clickButton(game->tabButton[BUTTON_EASY], clickX, clickY)) {
         game->Niveau = 2;
         game->startNiveau = 2;

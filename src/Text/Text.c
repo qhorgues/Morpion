@@ -25,7 +25,7 @@
  * \param Quality La qualite du texte utiliser : BLENDED, SHADED, SOLID
  * \param background Si SHADED Un pointeur sur une structure pour la couleur de fond sinon NULL
  */
-void loadText(SDL_Window* window, SDL_Renderer* renderer, const char * text, TTF_Font * font, Text* text_ptr, const SDL_Color colorText, const unsigned char Quality, const SDL_Color* background) { // Charger le texte en memoire
+void loadText(SDL_Window* window, SDL_Renderer* renderer, const char * text, TTF_Font * font, Text* text_ptr, const SDL_Color colorText, const uint_fast8_t Quality, const SDL_Color* background) { // Charger le texte en memoire
     text_ptr->RectText = malloc(sizeof(SDL_Rect));
     Test(window, renderer, ERROR, text_ptr->RectText == NULL, "malloc", __FILE__, __LINE__-1);
 
@@ -59,7 +59,7 @@ void loadText(SDL_Window* window, SDL_Renderer* renderer, const char * text, TTF
  * \param x la coordonnee x du texte
  * \param y la coordonnee y du texte
  */
-void printText(SDL_Window* window, SDL_Renderer* renderer, Text* text, const unsigned short x, const unsigned short y) { // Afficher le texte
+void printText(SDL_Window* window, SDL_Renderer* renderer, Text* text, const uint_fast16_t x, const uint_fast16_t y) { // Afficher le texte
     Test(window, renderer, FATAL_ERROR, text == NULL, "access to unallocated space", __FILE__, __LINE__);
     Test(window, renderer, ERROR, text->RectText == NULL, "access to unallocated space", __FILE__, __LINE__);
     Test(window, renderer, ERROR, text->texture == NULL, "access to unallocated space", __FILE__, __LINE__);

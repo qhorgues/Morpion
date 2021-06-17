@@ -16,7 +16,9 @@
         "graphic.h": "c",
         "button.h": "c",
         "ia.h": "c",
-        "setingfile.h": "c"
+        "setingfile.h": "c",
+        "stdint.h": "c",
+        "stdint-gcc.h": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

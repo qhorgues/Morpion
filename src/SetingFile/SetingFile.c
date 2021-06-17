@@ -17,7 +17,7 @@
 #include "../Test/Test.h"
 #include "SetingFile.h"
 
-#include <windows.h>
+//#include <windows.h>
 #include <string.h>
 #include <sys/stat.h>
 
@@ -36,14 +36,14 @@ void loadSeting(SDL_Window* window, SDL_Renderer* renderer, const char* PATH, SD
     FILE* file = fopen(PATH, "rb");
 
     if (file != NULL) {
-        fread(&color->r, sizeof(unsigned char), 1, file);
-        fread(&color->g, sizeof(unsigned char), 1, file);
-        fread(&color->b, sizeof(unsigned char), 1, file);
-        fread(&color->a, sizeof(unsigned char), 1, file);
-        fread(&background->r, sizeof(unsigned char), 1, file);
-        fread(&background->g, sizeof(unsigned char), 1, file);
-        fread(&background->b, sizeof(unsigned char), 1, file);
-        fread(&background->a, sizeof(unsigned char), 1, file);
+        fread(&color->r, sizeof(unint_fast8_t), 1, file);
+        fread(&color->g, sizeof(unint_fast8_t), 1, file);
+        fread(&color->b, sizeof(unint_fast8_t), 1, file);
+        fread(&color->a, sizeof(unint_fast8_t), 1, file);
+        fread(&background->r, sizeof(unint_fast8_t), 1, file);
+        fread(&background->g, sizeof(unint_fast8_t), 1, file);
+        fread(&background->b, sizeof(unint_fast8_t), 1, file);
+        fread(&background->a, sizeof(unint_fast8_t), 1, file);
         Test( window, renderer, ERROR, fclose(file) == EOF, "fclose", __FILE__, __LINE__);
     }
 }
@@ -61,14 +61,14 @@ void saveSeting(SDL_Window* window, SDL_Renderer* renderer, const char* PATH, co
     FILE* file = fopen(PATH, "wba");
     
     if (file != NULL) {
-        fwrite(&color.r, sizeof(unsigned char), 1, file);
-        fwrite(&color.g, sizeof(unsigned char), 1, file);
-        fwrite(&color.b, sizeof(unsigned char), 1, file);
-        fwrite(&color.a, sizeof(unsigned char), 1, file);
-        fwrite(&background.r, sizeof(unsigned char), 1, file);
-        fwrite(&background.g, sizeof(unsigned char), 1, file);
-        fwrite(&background.b, sizeof(unsigned char), 1, file);
-        fwrite(&background.a, sizeof(unsigned char), 1, file);
+        fwrite(&color.r, sizeof(unint_fast8_t), 1, file);
+        fwrite(&color.g, sizeof(unint_fast8_t), 1, file);
+        fwrite(&color.b, sizeof(unint_fast8_t), 1, file);
+        fwrite(&color.a, sizeof(unint_fast8_t), 1, file);
+        fwrite(&background.r, sizeof(unint_fast8_t), 1, file);
+        fwrite(&background.g, sizeof(unint_fast8_t), 1, file);
+        fwrite(&background.b, sizeof(unint_fast8_t), 1, file);
+        fwrite(&background.a, sizeof(unint_fast8_t), 1, file);
         Test( window, renderer, ERROR, fclose(file) == EOF, "fclose", __FILE__, __LINE__);
     }
 }

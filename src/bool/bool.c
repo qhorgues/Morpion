@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include "bool.h"
 #include <math.h>
-typedef unsigned char tabBool;
-typedef unsigned int long_tabBool;
+typedef uint_fast8_t tabBool;
+typedef uint_fast32_t long_tabBool;
 
-int powi(const int value, int power)
+int_fast32_t powi(const int_fast32_t value, int_fast32_t power)
 {
     if (power >= 0)
     {
@@ -12,7 +12,7 @@ int powi(const int value, int power)
         {
             return 1;
         }
-        int curentValue = value;
+        int_fast32_t curentValue = value;
         while (power > 1)
         {
             curentValue *= value;
@@ -30,7 +30,7 @@ int powi(const int value, int power)
  * \param position La position dans le tableau
  * \return true ou false
  */
-bool get_tabBool(const tabBool tab, const int position)
+bool get_tabBool(const tabBool tab, const int_fast32_t position)
 {
     if ((tab & powi(2, position)) != 0)
     {
@@ -47,7 +47,7 @@ bool get_tabBool(const tabBool tab, const int position)
  * \param value la nouvelle valeur du booleen
  * \return Le tableau modifie
  */
-tabBool set_tabBool(tabBool tab, const int position, const bool value)
+tabBool set_tabBool(tabBool tab, const int_fast32_t position, const bool value)
 {
     if (get_tabBool(tab, position) == value)
     {
@@ -65,7 +65,7 @@ tabBool set_tabBool(tabBool tab, const int position, const bool value)
     return tab;
 }
 
-int long_powi(const int value, int power)
+int_fast32_t long_powi(const int_fast32_t value, int_fast32_t power)
 {
     if (power >= 0)
     {
@@ -73,7 +73,7 @@ int long_powi(const int value, int power)
         {
             return 1;
         }
-        int curentValue = value;
+        int_fast32_t curentValue = value;
         while (power > 1)
         {
             curentValue *= value;
@@ -84,7 +84,7 @@ int long_powi(const int value, int power)
     return -1;
 }
 
-bool get_long_tabBool(const long_tabBool tab, const int position)
+bool get_long_tabBool(const long_tabBool tab, const int_fast32_t position)
 {
     if ((tab & long_powi(2, position)) != 0)
     {
@@ -93,7 +93,7 @@ bool get_long_tabBool(const long_tabBool tab, const int position)
     return false;
 }
 
-long_tabBool set_long_tabBool(long_tabBool tab, const int position, const bool value)
+long_tabBool set_long_tabBool(long_tabBool tab, const int_fast32_t position, const bool value)
 {
     if (get_tabBool(tab, position) == value)
     {

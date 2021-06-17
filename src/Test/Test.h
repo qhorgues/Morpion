@@ -18,6 +18,6 @@
 #define ERROR 2
 #define FATAL_ERROR 3
 
-void Test(SDL_Window* window, SDL_Renderer* renderer, const int Priority, const bool condition, const char* message, const char* file, const int line);
+void Test(SDL_Window* window, SDL_Renderer* renderer, const int_fast32_t Priority, const bool condition, const char* message, const char* file, const int_fast32_t line);
 
 #endif // TEST_H_INCLUDED

@@ -1,7 +1,7 @@
 #include "IA.h"
 #include "../constante.h"
 
-int testScore(int score, int maxScore) {
+int_fast32_t testScore(int_fast32_t score, int_fast32_t maxScore) {
     if (score == 3) {  
         score = 100;
     }
@@ -14,14 +14,14 @@ int testScore(int score, int maxScore) {
     return maxScore;
 }
 
-int f_score(signed char (*grille)[LEN_GRILLE] , const char ID, Coor * dpt, Coor * arv) {
-    int score = 0;
-    int MaxScore = 0;
+int_fast32_t f_score(int_fast8_t (*grille)[LEN_GRILLE] , const char ID, Coor * dpt, Coor * arv) {
+    int_fast32_t score = 0;
+    int_fast32_t MaxScore = 0;
     char JoueurAdverse = ID*-1;
 
     // Tester les lignes
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
+    for (int_fast32_t i = 0; i < 3; i++) {
+        for (int_fast32_t j = 0; j < 3; j++) {
             if (ID == grille[i][j]) {
                 score++;
             } else if (JoueurAdverse == grille[i][j]) {
@@ -40,8 +40,8 @@ int f_score(signed char (*grille)[LEN_GRILLE] , const char ID, Coor * dpt, Coor 
     }   
     
     // Tester les colones
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
+    for (int_fast32_t i = 0; i < 3; i++) {
+        for (int_fast32_t j = 0; j < 3; j++) {
             if (ID == grille[j][i]) {
                 score++;
             } else if (JoueurAdverse == grille[j][i]) {
@@ -60,7 +60,7 @@ int f_score(signed char (*grille)[LEN_GRILLE] , const char ID, Coor * dpt, Coor 
     }   
     
     // tester la diago 1 (L-> R)
-    for (int i = 0; i < 3; i++) {
+    for (int_fast32_t i = 0; i < 3; i++) {
         if (ID == grille[i][i]) {
             score++;
         } else if (JoueurAdverse == grille[i][i]) {
@@ -78,8 +78,8 @@ int f_score(signed char (*grille)[LEN_GRILLE] , const char ID, Coor * dpt, Coor 
     score = 0;
     
     // tester la diago 2 (R-> L)
-    int i = 0;
-    for (int j = 2; j > -1; j--) {
+    int_fast32_t i = 0;
+    for (int_fast32_t j = 2; j > -1; j--) {
         if (ID == grille[i][j]) {
             score++;
         } else if (JoueurAdverse == grille[i][j]) {

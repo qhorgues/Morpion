@@ -19,7 +19,7 @@
  * \param Name Le nom du joueur
  * \param Score Le score du joueur
  */
-void InitPlayer( const Game* game, Player* player, const char ID, const char * Name, const unsigned char Score) {
+void InitPlayer( const Game* game, Player* player, const char ID, const char * Name, const uint_fast8_t Score) {
     player->ID = ID;
     player->score = Score;
 

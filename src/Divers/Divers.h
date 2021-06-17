@@ -4,7 +4,7 @@
 #include <SDL2/SDL.h>
 #include "../Game/Game.h"
 void changeColor( Game* game);
-SDL_Color rgba_to_color( const unsigned char r, const unsigned char g, const unsigned char b, const unsigned char a);
+SDL_Color rgba_to_color( const uint_fast8_t r, const uint_fast8_t g, const uint_fast8_t b, const uint_fast8_t a);
 void Version(void);
 
 #endif // !DIVERS_H_INCLUDED

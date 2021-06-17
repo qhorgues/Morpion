@@ -10,17 +10,17 @@
 #include "../constante.h"
 #include "../Test/Test.h"
 
-int IA(Game *game, const signed char joueurT, const unsigned char Profondeur, Coor *bestCoup)
+int_fast32_t IA(Game *game, const int_fast8_t joueurT, const uint_fast8_t Profondeur, Coor *bestCoup)
 {
     Coor *tabBestCoup = NULL;
-    unsigned char size_tabBestCoup = 0;
-    short score = 0;
-    short scoreT = 0;
+    uint_fast8_t size_tabBestCoup = 0;
+    int_fast16_t score = 0;
+    int_fast16_t scoreT = 0;
     Coor firstCaseDispo = {10, 10};
 
-    for (unsigned char i = 0; i < LEN_GRILLE; i++)
+    for (uint_fast8_t i = 0; i < LEN_GRILLE; i++)
     {
-        for (unsigned char j = 0; j < LEN_GRILLE; j++)
+        for (uint_fast8_t j = 0; j < LEN_GRILLE; j++)
         {
             if (game->grille[i][j] == 0)
             {
@@ -73,7 +73,7 @@ int IA(Game *game, const signed char joueurT, const unsigned char Profondeur, Co
     if (Profondeur == 1)
     {
         srand(time(NULL));
-        const unsigned char result = rand() % size_tabBestCoup;
+        const uint_fast8_t result = rand() % size_tabBestCoup;
         bestCoup->x = tabBestCoup[result].x;
         bestCoup->y = tabBestCoup[result].y;
     }
@@ -143,9 +143,9 @@ bool testWin(Game *game)
 
 void ouverture(Coor* coupOpen) {
     srand(time(NULL));
-    const unsigned char configX[4] = { 0, 0, 2, 2};
-    const unsigned char configY[4] = { 0, 2, 0, 2};
-    const unsigned char result = rand() % 4;
+    const uint_fast8_t configX[4] = { 0, 0, 2, 2};
+    const uint_fast8_t configY[4] = { 0, 2, 0, 2};
+    const uint_fast8_t result = rand() % 4;
     coupOpen->x = configX[result];
     coupOpen->y = configY[result];
 }

@@ -47,7 +47,7 @@ Game initGame(const char * PATH_SaveFolder) {
 
     game.NivAuto = false;
 
-    for (int i = 0; i < N_BUTTON; i++) {
+    for (int_fast32_t i = 0; i < N_BUTTON; i++) {
         game.tabButton[i] = NULL;
     }
     
@@ -67,7 +67,7 @@ void freeGame( Game* game, const char * PATH_SaveFolder) {
     freePlayer(&game->player1);
     freePlayer(&game->player2);
     
-    for(int i = 0; i < N_BUTTON; i++) {
+    for(int_fast32_t i = 0; i < N_BUTTON; i++) {
         if (game->tabButton[i] != NULL) {
             freeButton(game->window, game->renderer, game->tabButton[i]);
             free(game->tabButton[i]);
@@ -101,7 +101,7 @@ void update( Game* game) {
     SDL_RenderPresent(game->renderer);
 }
 
-bool getClick( Game* game, const unsigned short clickX, const unsigned short clickY) {
+bool getClick( Game* game, const uint_fast16_t clickX, const uint_fast16_t clickY) {
     if (get_tabBool(game->boolMenu, IN_GAME)) {
         addGrille( game, clickX, clickY);
     } else if (get_tabBool(game->boolMenu, MENU_END)) {

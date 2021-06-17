@@ -7,19 +7,19 @@
 #include "../Test/Test.h"
 #include "../Game/Game.h"
 
-signed char signe(const int n);
-void ligneHorizontale(const Game* game, const short x, const short y, const short w);
-void disque(Game* game, const short cx, const short cy, const short rayon);
+int_fast8_t signe(const int_fast32_t n);
+void ligneHorizontale(const Game* game, const int_fast16_t x, const int_fast16_t y, const int_fast16_t w);
+void disque(Game* game, const int_fast16_t cx, const int_fast16_t cy, const int_fast16_t rayon);
 
 
 void lineWinner(Game* game, const Coor dpt, const Coor arv) {
-    const signed char cx = signe(arv.x - dpt.x);
-    const signed char cy = signe(arv.y - dpt.y);
+    const int_fast8_t cx = signe(arv.x - dpt.x);
+    const int_fast8_t cy = signe(arv.y - dpt.y);
 	
-    unsigned short x = dpt.x* (SIZE_X/3) + SIZE_X/6;
-    unsigned short y = dpt.y* (SIZE_X/3) + SIZE_X/6 + OF_SET;
-    const unsigned short x_arv = arv.x* (SIZE_X/3) + SIZE_X/6;
-    const unsigned short y_arv = arv.y* (SIZE_X/3) + SIZE_X/6 + OF_SET;
+    uint_fast16_t x = dpt.x* (SIZE_X/3) + SIZE_X/6;
+    uint_fast16_t y = dpt.y* (SIZE_X/3) + SIZE_X/6 + OF_SET;
+    const uint_fast16_t x_arv = arv.x* (SIZE_X/3) + SIZE_X/6;
+    const uint_fast16_t y_arv = arv.y* (SIZE_X/3) + SIZE_X/6 + OF_SET;
 
     Test( game->window, game->renderer, WARNING, SDL_SetRenderDrawColor(game->renderer, 77, 218, 225, 50) != 0, "SDL_SetRenderDrawColor", __FILE__, __LINE__);
     Test( game->window, game->renderer, WARNING, SDL_SetRenderDrawBlendMode(game->renderer, SDL_BLENDMODE_BLEND) != 0, "SDL_SetRenderDrawBlendMode", __FILE__, __LINE__);
@@ -37,8 +37,8 @@ void lineWinner(Game* game, const Coor dpt, const Coor arv) {
 }
 
 
-void disque(Game* game, const short cx, const short cy, const short rayon) {
-  short d, y, x;
+void disque(Game* game, const int_fast16_t cx, const int_fast16_t cy, const int_fast16_t rayon) {
+  int_fast16_t d, y, x;
  
   d = 3 - (2 * rayon);
   x = 0;
@@ -61,7 +61,7 @@ void disque(Game* game, const short cx, const short cy, const short rayon) {
   }
 }
 
-void ligneHorizontale(const Game* game, const short x, const short y, const short w) {
+void ligneHorizontale(const Game* game, const int_fast16_t x, const int_fast16_t y, const int_fast16_t w) {
   SDL_Rect r;
  
   r.x = x;
@@ -72,7 +72,7 @@ void ligneHorizontale(const Game* game, const short x, const short y, const shor
   Test( game->window, game->renderer, WARNING, SDL_RenderFillRect( game->renderer, &r) != 0, "SDL_RenderFillRect", __FILE__, __LINE__);
 }
 
-signed char signe(const int n) {
+int_fast8_t signe(const int_fast32_t n) {
     if (n < 0) {
         return -1;
     }
