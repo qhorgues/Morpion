@@ -75,10 +75,24 @@ void saveSeting(SDL_Window* window, SDL_Renderer* renderer, const char* PATH, co
 const char* createFolder(void) {
 
     #if defined(_WIN32) || defined(_WIN64)
-        const char* PATH = strcat(strdup(getenv("APPDATA")), "\\..\\LocalLow\\Morpion");
+        const uint_fast8_t size_env = strlen(getenv("APPDATA"));
+        char *env = malloc(sizeof(char) * (size_env  + 21));
+        Test(NULL, NULL, ERROR, env == NULL, "malloc", __FILE__, __LINE__);
+
+        env = strdup(getenv("APPDATA"));
+
+        const char* PATH = strdup(strcat(env, "\\..\\LocalLow\\Morpion"));
+        free(env);
         mkdir(PATH);
     #elif defined(UNIX)
-        const char* PATH = strcat(strdup(getenv("HOME")), "/Morpion");
+        const uint_fast8_t size_env = strlen(getenv("HOME"));
+        char *env = malloc(sizeof(char) * (size_env  + 9));
+        Test(NULL, NULL, ERROR, env == NULL, "malloc", __FILE__, __LINE__);
+
+        env = strdup(getenv("HOME"));
+
+        const char* PATH = strdup(strcat(env, "/Morpion"));
+        free(env);
         mkdir(PATH, S_IRUSR);
     #else
         const char* PATH = "./Save";
