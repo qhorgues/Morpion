@@ -82,7 +82,7 @@ const char* createFolder(void) {
         mkdir(PATH, S_IRUSR);
     #else
         const char* PATH = "./Save";
-        mkdir(PATH);
+        mkdir(PATH, S_IRUSR);
     #endif
 
     return PATH;
