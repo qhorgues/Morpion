@@ -1,7 +1,8 @@
 WIN = true
+CONSOLE = false
+
 CC = gcc
 CFLAG = -Wall -Wextra -Werror -pedantic -std=c18
-
 EXEC = bin/Morpion
 
 SRC = $(wildcard src/*.c src/Test/*.c src/bool/*.c src/Image/*.c src/Text/*.c src/SetingFile/*.c src/Game/*.c src/Divers/*.c src/Player/*.c src/Grille/*.c src/Graphic/*.c src/IA/*.c src/Button/*.c)
@@ -10,7 +11,9 @@ OBJ = $(SRC:.c=.o)
 ifeq ($(WIN), true)
 	ICO = src/Logo.o
 	CLIB = -L lib -I include -lSDL2main -lSDL2 -lSDL2_ttf -lSDL2_image
-	CWINDOW = -mwindows
+	ifeq ($(CONSOLE), false)
+		CWINDOW = -mwindows
+	endif
 else
 	CLIB = `sdl2-config --cflags --libs`
 endif
