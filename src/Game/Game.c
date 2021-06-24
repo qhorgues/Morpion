@@ -37,8 +37,15 @@ Game initGame(const char * PATH_SaveFolder) {
     
     game.color = rgba_to_color( 0, 0, 0, SDL_ALPHA_OPAQUE);
     game.background = rgba_to_color( 255, 255, 255, SDL_ALPHA_OPAQUE);
-    loadSeting(game.window, game.renderer, strcat( strdup(PATH_SaveFolder), "\\Seting.bin"), &game.color, &game.background);
- 
+
+    char* PATH = malloc(sizeof(char) * (strlen(PATH_SaveFolder)+12));
+    Test( game.window, game.renderer, ERROR, PATH == NULL, "malloc", __FILE__, __LINE__);
+
+    strcpy(PATH, PATH_SaveFolder);
+    loadSeting(game.window, game.renderer, strcat( PATH, "/Seting.bin"), &game.color, &game.background);
+
+    free(PATH);
+
     game.boolMenu = false;
     game.boolMenu = set_tabBool(game.boolMenu, MENU, true);
     game.boolMenu = set_tabBool(game.boolMenu, CHANGE_COLOR, true);
@@ -60,7 +67,13 @@ Game initGame(const char * PATH_SaveFolder) {
  * \param game 
  */
 void freeGame( Game* game, const char * PATH_SaveFolder) {
-    saveSeting(game->window, game->renderer, strcat( strdup(PATH_SaveFolder), "\\Seting.bin"), game->color, game->background);
+
+    char* PATH = malloc(sizeof(char) * (strlen(PATH_SaveFolder)+12));
+    Test( game->window, game->renderer, ERROR, PATH == NULL, "malloc", __FILE__, __LINE__);
+
+    strcpy(PATH, PATH_SaveFolder);
+    saveSeting(game->window, game->renderer, strcat( PATH, "/Seting.bin"), game->color, game->background);
+    free(PATH);
 
     freePlayer(&game->player1);
     freePlayer(&game->player2);

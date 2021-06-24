@@ -16,7 +16,7 @@
 
 void loadSeting(SDL_Window* window, SDL_Renderer* renderer, const char* PATH, SDL_Color* color, SDL_Color* background);
 void saveSeting(SDL_Window* window, SDL_Renderer* renderer, const char* PATH, const SDL_Color color, const SDL_Color background);
-const char* createFolder(void);
+char* createFolder(void);
 
 
 #endif // !SETING_FILE_H_INCLUDED

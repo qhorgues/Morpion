@@ -35,18 +35,18 @@ void loadSeting(SDL_Window* window, SDL_Renderer* renderer, const char* PATH, SD
     FILE* file = fopen(PATH, "rb");
 
     if (file != NULL) {
-        fread(&color->r, sizeof(uint8_t), 1, file);
-        fread(&color->g, sizeof(uint8_t), 1, file);
-        fread(&color->b, sizeof(uint8_t), 1, file);
-        fread(&color->a, sizeof(uint8_t), 1, file);
-        fread(&background->r, sizeof(uint8_t), 1, file);
-        fread(&background->g, sizeof(uint8_t), 1, file);
-        fread(&background->b, sizeof(uint8_t), 1, file);
-        fread(&background->a, sizeof(uint8_t), 1, file);
+        Test( window, renderer, ERROR, fread(&color->r, sizeof(uint8_t), 1, file) == 0, "fread", __FILE__, __LINE__);
+        Test( window, renderer, ERROR, fread(&color->g, sizeof(uint8_t), 1, file) == 0, "fread", __FILE__, __LINE__);
+        Test( window, renderer, ERROR, fread(&color->b, sizeof(uint8_t), 1, file) == 0, "fread", __FILE__, __LINE__);
+        Test( window, renderer, ERROR, fread(&color->a, sizeof(uint8_t), 1, file) == 0, "fread", __FILE__, __LINE__);
+        Test( window, renderer, ERROR, fread(&background->r, sizeof(uint8_t), 1, file) == 0, "fread", __FILE__, __LINE__);
+        Test( window, renderer, ERROR, fread(&background->g, sizeof(uint8_t), 1, file) == 0, "fread", __FILE__, __LINE__);
+        Test( window, renderer, ERROR, fread(&background->b, sizeof(uint8_t), 1, file) == 0, "fread", __FILE__, __LINE__);
+        Test( window, renderer, ERROR, fread(&background->a, sizeof(uint8_t), 1, file) == 0, "fread", __FILE__, __LINE__);
         Test( window, renderer, ERROR, fclose(file) == EOF, "fclose", __FILE__, __LINE__);
     }
 }
-
+#include <errno.h>
 /**
  * \brief Enregistre les parametres dans un fichier
  * 
@@ -57,47 +57,54 @@ void loadSeting(SDL_Window* window, SDL_Renderer* renderer, const char* PATH, SD
  * \param background La structure background a sauvegarder 
  */
 void saveSeting(SDL_Window* window, SDL_Renderer* renderer, const char* PATH, const SDL_Color color, const SDL_Color background) {
+
     FILE* file = fopen(PATH, "wba");
     
     if (file != NULL) {
-        fwrite(&color.r, sizeof(uint8_t), 1, file);
-        fwrite(&color.g, sizeof(uint8_t), 1, file);
-        fwrite(&color.b, sizeof(uint8_t), 1, file);
-        fwrite(&color.a, sizeof(uint8_t), 1, file);
-        fwrite(&background.r, sizeof(uint8_t), 1, file);
-        fwrite(&background.g, sizeof(uint8_t), 1, file);
-        fwrite(&background.b, sizeof(uint8_t), 1, file);
-        fwrite(&background.a, sizeof(uint8_t), 1, file);
+        Test( window, renderer, ERROR, fwrite(&(color.r), sizeof(uint8_t), 1, file) == 0, "fwrite", __FILE__, __LINE__);
+        Test( window, renderer, ERROR, fwrite(&(color.g), sizeof(uint8_t), 1, file) == 0, "fwrite", __FILE__, __LINE__);
+        Test( window, renderer, ERROR, fwrite(&(color.b), sizeof(uint8_t), 1, file) == 0, "fwrite", __FILE__, __LINE__);
+        Test( window, renderer, ERROR, fwrite(&(color.a), sizeof(uint8_t), 1, file) == 0, "fwrite", __FILE__, __LINE__);
+        Test( window, renderer, ERROR, fwrite(&(background.r), sizeof(uint8_t), 1, file) == 0, "fwrite", __FILE__, __LINE__);
+        Test( window, renderer, ERROR, fwrite(&(background.g), sizeof(uint8_t), 1, file) == 0, "fwrite", __FILE__, __LINE__);
+        Test( window, renderer, ERROR, fwrite(&(background.b), sizeof(uint8_t), 1, file) == 0, "fwrite", __FILE__, __LINE__);
+        Test( window, renderer, ERROR, fwrite(&(background.a), sizeof(uint8_t), 1, file) == 0, "fwrite", __FILE__, __LINE__);
         Test( window, renderer, ERROR, fclose(file) == EOF, "fclose", __FILE__, __LINE__);
     }
 }
 
-const char* createFolder(void) {
+char* createFolder(void) {
 
     #if defined(_WIN32) || defined(_WIN64)
         const uint_fast8_t size_env = strlen(getenv("APPDATA"));
-        char *env = malloc(sizeof(char) * (size_env  + 21));
-        Test(NULL, NULL, ERROR, env == NULL, "malloc", __FILE__, __LINE__);
+        char *PATH = malloc(sizeof(char) * (size_env  + 21));
+        Test(NULL, NULL, ERROR, PATH == NULL, "malloc", __FILE__, __LINE__);
 
-        env = strdup(getenv("APPDATA"));
+        strcpy(PATH, getenv("APPDATA"));
 
-        const char* PATH = strdup(strcat(env, "\\..\\LocalLow\\Morpion"));
-        free(env);
+        strcat(PATH, "/../LocalLow/Morpion");
+
         mkdir(PATH);
-    #elif defined(UNIX)
+
+    #elif defined(UNIX) || defined(__LINUX__)
         const uint_fast8_t size_env = strlen(getenv("HOME"));
-        char *env = malloc(sizeof(char) * (size_env  + 9));
-        Test(NULL, NULL, ERROR, env == NULL, "malloc", __FILE__, __LINE__);
+        char *PATH = malloc(sizeof(char) * (size_env  + 9));
+        Test(NULL, NULL, ERROR, PATH == NULL, "malloc", __FILE__, __LINE__);
 
-        env = strdup(getenv("HOME"));
+        strcpy(PATH, getenv("HOME"));
 
-        const char* PATH = strdup(strcat(env, "/Morpion"));
-        free(env);
-        mkdir(PATH, S_IRUSR);
+        strcat(PATH, "/.Morpion");
+        puts(PATH);
+
+        mkdir(PATH, S_IRWXO | S_IRWXG | S_IRWXU);
+        
     #else
+        char *PATH = malloc(sizeof(char) * 7);
+        Test(NULL, NULL, ERROR, PATH == NULL, "malloc", __FILE__, __LINE__);
+
         const char* PATH = "./Save";
         mkdir(PATH, S_IRUSR);
     #endif
-
+    
     return PATH;
 }

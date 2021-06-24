@@ -48,18 +48,30 @@ void Test(SDL_Window* window, SDL_Renderer* renderer, const int_fast32_t Priorit
     // priority 1 for Warning 2 for Test, 3 for Fatal Test
     if (condition) {
         if (Priority == 1) {
-            if (printf("Warning : %s    file : %s in line %d   GetError: %s\n", message, file, line, SDL_GetError()) == EOF) {
+            #if defined(_WIN32) || defined(_WIN64)
+                if (printf("Warning : %s    file : %s in line %d   GetError: %s\n", message, file, line, SDL_GetError()) == EOF) {
+            #else
+                if (printf("Warning : %s    file : %s in line %ld   GetError: %s\n", message, file, line, SDL_GetError()) == EOF) {
+            #endif
                 Quit(window, renderer, -3);
             }
         }
         else if (Priority == 2) {
-            if (printf("Error : %s    file : %s in line %d   GetError: %s\n", message, file, line, SDL_GetError()) == EOF) {
+            #if defined(_WIN32) || defined(_WIN64)
+                if (printf("Error : %s    file : %s in line %d   GetError: %s\n", message, file, line, SDL_GetError()) == EOF) {
+            #else
+                if (printf("Error : %s    file : %s in line %ld   GetError: %s\n", message, file, line, SDL_GetError()) == EOF) {
+            #endif
                 Quit(window, renderer, -3);
             }
             Quit(window, renderer, 1);
         }
         else if (Priority == 3) {
-            if (printf("Fatal error : %s    file : %s in line %d   GetError: %s\n", message, file, line, SDL_GetError()) == EOF) {
+            #if defined(_WIN32) || defined(_WIN64)
+                if (printf("Fatal error : %s    file : %s in line %d   GetError: %s\n", message, file, line, SDL_GetError()) == EOF) {
+            #else
+                if (printf("Fatal error : %s    file : %s in line %ld   GetError: %s\n", message, file, line, SDL_GetError()) == EOF) {
+            #endif
                 Quit(window, renderer, -3);
             }
             Quit(window, renderer, -1);

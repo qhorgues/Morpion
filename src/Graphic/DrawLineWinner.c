@@ -1,4 +1,4 @@
-#include <SDl2/SDL.h>
+#include <SDL2/SDL.h>
 
 #include "Graphic.h"
 #define STRUCT_COOR

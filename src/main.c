@@ -22,7 +22,7 @@
 
 int main(void)
 {
-    const char* PATH = createFolder();
+    char* PATH = createFolder();
     Version();
 
     Test( NULL, NULL, FATAL_ERROR, SDL_Init(SDL_INIT_EVENTS) != 0, "SDL_Init", __FILE__, __LINE__); // on charge la SDL
@@ -72,6 +72,7 @@ int main(void)
 end:
     // Liberation memoire
     freeGame(&game, PATH);
+    free(PATH);
     SDL_Quit();
     return 0;
 }

@@ -34,7 +34,11 @@ static Text createTextScore( const Game* game, TTF_Font* font, const char* txt, 
     
     size_t lenScore = strlen(txt) + 3 + intLen(score);
     char* strScore = malloc( (lenScore + 1) * sizeof(char));
-    Test(game->window, game->renderer, ERROR, sprintf(strScore, "%s : %d", txt, score) == EOF, "sprintf", __FILE__, __LINE__);
+    #if defined(_WIN32) || defined(_WIN64)
+        Test(game->window, game->renderer, ERROR, sprintf(strScore, "%s : %d", txt, score) == EOF, "sprintf", __FILE__, __LINE__);
+    #else
+        Test(game->window, game->renderer, ERROR, sprintf(strScore, "%s : %ld", txt, score) == EOF, "sprintf", __FILE__, __LINE__);
+    #endif
     strScore[lenScore] = '\0';
     
     Text textSxore;

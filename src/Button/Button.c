@@ -10,12 +10,12 @@ Button* allocButtonText(SDL_Window* window, SDL_Renderer* renderer, const uint_f
 
 void loadButtonText(SDL_Window* window, SDL_Renderer* renderer, const uint_fast16_t w, const uint_fast16_t h, const char * text, TTF_Font * font, Button* bouton, const SDL_Color colorText, const SDL_Color back) {
     loadText( window, renderer, text, font, &bouton->textButton, colorText, SHADED, &back);
-    if (bouton->textButton.RectText->w < w) {
+    if (bouton->textButton.RectText->w < (int)w) {
         bouton->rectButton.w = w;
     } else {
         bouton->rectButton.w = bouton->textButton.RectText->w;
     }
-    if (bouton->textButton.RectText->h < h) {
+    if (bouton->textButton.RectText->h < (int)h) {
         bouton->rectButton.h = h;
     } else {
         bouton->rectButton.h = bouton->textButton.RectText->h;
@@ -37,7 +37,7 @@ void printButton(SDL_Window* window, SDL_Renderer* renderer, Button* bouton, con
 
 bool clickButton( const Button* bouton, const uint_fast16_t clickX, const uint_fast16_t clickY) {
     if (bouton != NULL) {
-        if (clickX >= bouton->rectButton.x && clickX <= bouton->rectButton.x + bouton->rectButton.w && clickY >= bouton->rectButton.y && clickY <= bouton->rectButton.y + bouton->rectButton.h) {
+        if ((int)clickX >= bouton->rectButton.x && (int)clickX <= bouton->rectButton.x + bouton->rectButton.w && (int)clickY >= bouton->rectButton.y && (int)clickY <= bouton->rectButton.y + bouton->rectButton.h) {
         return true;
         }
     }
