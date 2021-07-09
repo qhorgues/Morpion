@@ -2,6 +2,7 @@ WIN = true
 CONSOLE = false
 
 CC = gcc
+CD = -g
 CFLAG = -O3 -Wall -Wextra -Werror -pedantic -std=c18
 EXEC = bin/Morpion
 
@@ -21,10 +22,10 @@ endif
 all  : $(EXEC)
 
 %.o : %.c
-	$(CC) $(CFLAG) -o $@ -c $< $(CLIB)
+	$(CC) $(CD) $(CFLAG) -o $@ -c $< $(CLIB)
 
 $(EXEC) : $(OBJ)
-	$(CC) $(CFLAG) -o $@ $^ $(ICO) $(CLIB) $(CWINDOW)
+	$(CC) $(CD) $(CFLAG) -o $@ $^ $(ICO) $(CLIB) $(CWINDOW)
 
 clean : 
 	rm -rf *.o
