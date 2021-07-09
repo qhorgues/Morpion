@@ -22,6 +22,16 @@ void update_in_menu( Game* game) {
     freeText(game->window, game->renderer, &Titre);
     TTF_CloseFont(Imprisha);
 
+    Imprisha = TTF_OpenFont("assets/Fonts/IMPRISHA.ttf", 20);
+    Test(game->window, game->renderer, ERROR, Imprisha == NULL, "TTF_OpenFont", __FILE__, __LINE__-1);
+
+    Text Dev;
+    loadText( game->window, game->renderer, "by Quentin Horgues", Imprisha, &Dev, game->color, SHADED, &game->background);
+    printText( game->window, game->renderer, &Dev, 5, SIZE_Y - Dev.RectText->h - 5);
+    freeText(game->window, game->renderer, &Dev);
+
+    TTF_CloseFont(Imprisha);
+
     TTF_Font* calibri = TTF_OpenFont("assets/Fonts/calibrib.ttf", 30);
     Test(game->window, game->renderer, ERROR, calibri == NULL, "TTF_OpenFont", __FILE__, __LINE__-1);
 

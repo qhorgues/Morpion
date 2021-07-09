@@ -5,27 +5,27 @@
 #define MyAppVersion "1.2"
 #define MyAppPublisher "Quentin Horgues"
 #define MyAppExeName "Morpion.exe"
-#define MyAppAssocName MyAppName + " File"
+#define MyAppAssocName MyAppName + ""
 #define MyAppAssocExt ".myp"
 #define MyAppAssocKey StringChange(MyAppAssocName, " ", "") + MyAppAssocExt
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{21A31089-DD54-4EAE-9484-B65DDB915E2F}
+AppId={{F36DE5ED-ABA8-4A00-9406-A1E1B946C2E0}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
 AppPublisher={#MyAppPublisher}
-DefaultDirName={autopf}\{#MyAppName}
+DefaultDirName=C:\Program Files\{#MyAppName}
 ChangesAssociations=yes
 DisableProgramGroupPage=yes
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
 ;PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=dialog
-OutputDir=D:\quent\Bureau
+OutputDir=D:\quent\Programmes\C\Project_SDL\Morpion\Setup
 OutputBaseFilename=Morpion Setup
-SetupIconFile=D:\quent\Images\Logo (2020_12_14 21_26_00 UTC).ico
+SetupIconFile=D:\quent\Images\Icone\Morpion.ico
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
@@ -38,18 +38,18 @@ Name: "french"; MessagesFile: "compiler:Languages\French.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "D:\quent\Programmes\C\Project_SDL\Morpion\bin\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\quent\Programmes\C\Project_SDL\Morpion\bin\libfreetype-6.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\quent\Programmes\C\Project_SDL\Morpion\bin\libjpeg-9.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\quent\Programmes\C\Project_SDL\Morpion\bin\libpng16-16.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\quent\Programmes\C\Project_SDL\Morpion\bin\libtiff-5.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\quent\Programmes\C\Project_SDL\Morpion\bin\libwebp-7.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\quent\Programmes\C\Project_SDL\Morpion\bin\SDL2.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\quent\Programmes\C\Project_SDL\Morpion\bin\SDL2_image.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\quent\Programmes\C\Project_SDL\Morpion\bin\SDL2_ttf.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\quent\Programmes\C\Project_SDL\Morpion\bin\sdl2-config"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\quent\Programmes\C\Project_SDL\Morpion\bin\zlib1.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "D:\quent\Programmes\C\Project_SDL\Morpion\bin\assets\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "D:\quent\Programmes\C\Project_SDL\Morpion\Setup\bin\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\quent\Programmes\C\Project_SDL\Morpion\Setup\bin\libfreetype-6.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\quent\Programmes\C\Project_SDL\Morpion\Setup\bin\libjpeg-9.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\quent\Programmes\C\Project_SDL\Morpion\Setup\bin\libpng16-16.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\quent\Programmes\C\Project_SDL\Morpion\Setup\bin\libtiff-5.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\quent\Programmes\C\Project_SDL\Morpion\Setup\bin\libwebp-7.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\quent\Programmes\C\Project_SDL\Morpion\Setup\bin\SDL2.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\quent\Programmes\C\Project_SDL\Morpion\Setup\bin\SDL2_image.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\quent\Programmes\C\Project_SDL\Morpion\Setup\bin\SDL2_ttf.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\quent\Programmes\C\Project_SDL\Morpion\Setup\bin\sdl2-config"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\quent\Programmes\C\Project_SDL\Morpion\Setup\bin\zlib1.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "D:\quent\Programmes\C\Project_SDL\Morpion\Setup\bin\assets\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Registry]
