@@ -2,7 +2,7 @@ WIN = true
 CONSOLE = false
 
 CC = gcc
-CFLAG = -Wall -Wextra -Werror -pedantic -std=c18
+CFLAG = -O3 -Wall -Wextra -Werror -pedantic -std=c18
 EXEC = bin/Morpion
 
 SRC = $(wildcard src/*.c src/Test/*.c src/bool/*.c src/Image/*.c src/Text/*.c src/SetingFile/*.c src/Game/*.c src/Divers/*.c src/Player/*.c src/Grille/*.c src/Graphic/*.c src/IA/*.c src/Button/*.c)

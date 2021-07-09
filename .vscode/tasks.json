@@ -1,65 +1,12 @@
 {
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
     "tasks": [
         {
-            "type": "cppbuild",
-            "label": "C/C++: gcc.exe générer le fichier actif",
-            "command": "gcc",
-            "args": [
-                "-O3",
-                "-Wall",
-                "-Wextra",
-                "-Werror",
-                "-pedantic",
-                "-std=c18",
-                //"-g",
-                "src/Logo.o",
-                "src/main.c",
-                "src/Test/Test.c",
-                "src/bool/bool.c",
-                "src/Image/Image.c",
-                "src/Text/Text.c",
-                "src/SetingFile/SetingFile.c",
-                "src/Game/Game.c",
-                "src/Divers/*.c",
-                "src/Player/Player.c",
-                "src/Grille/Grille.c",
-                "src/Graphic/*.c",
-                "src/IA/*.c",
-                "src/Button/Button.c",
-                "-o",
-                "${workspaceFolder}/bin/Morpion",
-
-                /* Linux */
-                "`sdl2-config",
-                "--cflags",
-                "--libs`",
-
-                /* Window */
-                /* "-L",
-                "lib",
-                "-I",
-                "include",
-                "-lSDL2main",
-                "-lSDL2",
-                */
-
-                "-lSDL2_ttf",
-                "-lSDL2_image",
-                
-                //"-mwindows", // Window uniquement 
-            ],
-            "options": {
-                "cwd": "${workspaceFolder}"
-            },
-            "problemMatcher": [
-                "$gcc"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "detail": "Tâche générée par le débogueur."
+            "label": "Make",
+            "type": "shell",
+            "command": "make all"
         }
-    ],
-    "version": "2.0.0"
+    ]
 }

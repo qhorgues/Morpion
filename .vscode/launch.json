@@ -34,7 +34,7 @@
                 "ignoreFailures": false
             }
         ],
-        "preLaunchTask": "C/C++: gcc.exe générer le fichier actif"
+        "preLaunchTask": "Make"
     }
     ]
 }
