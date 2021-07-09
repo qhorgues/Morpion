@@ -179,7 +179,7 @@ bool addGrille( Game *game, const uint_fast16_t clickX, const uint_fast16_t clic
         uint_fast16_t x = clickX / (SIZE_X / 3);
         if (game->grille[y][x] == 0)
         {
-                game->grille[y][x] = game->playerActif;
+            game->grille[y][x] = game->playerActif;
 
             IMG Symbole;
             Test(game->window, game->renderer, FATAL_ERROR, IMG_Init(IMG_INIT_PNG) == 0, "IMG_Init", __FILE__, __LINE__);
