@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=@Morpion_VERSION_MAJOR@.@Morpion_VERISON_MINOR@.@Morpion_VERSION_PATCH@
+Name=Morpion
+Comment=Le jeu du Morpion en français
+Exec=@CMAKE_INSTALL_PREFIX@/bin/Morpion
+Icon=Morpion
+Terminal=false
+Type=Application
+Categories=Game;
+GenericName=Morpion
+X-KDE-SubstituteUID=false

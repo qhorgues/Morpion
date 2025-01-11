@@ -3,6 +3,7 @@
 #include "../Grille/Grille.h"
 #include "../Text/Text.h"
 #include "../Test/Test.h"
+#include "../Divers/Version.h"
 
 void update_in_menu( Game* game) {
     Test(game->window, game->renderer, WARNING,
@@ -13,7 +14,7 @@ void update_in_menu( Game* game) {
 
     Test(game->window, game->renderer, FATAL_ERROR, TTF_Init() != 0, "TTF_Init", __FILE__, __LINE__);
 
-    TTF_Font* Imprisha = TTF_OpenFont("assets/Fonts/IMPRISHA.TTF", 70);
+    TTF_Font* Imprisha = TTF_OpenFont("assets/imprisha.ttf", 70);
     Test(game->window, game->renderer, ERROR, Imprisha == NULL, "TTF_OpenFont", __FILE__, __LINE__-1);
 
     Text Titre;
@@ -22,7 +23,7 @@ void update_in_menu( Game* game) {
     freeText(game->window, game->renderer, &Titre);
     TTF_CloseFont(Imprisha);
 
-    Imprisha = TTF_OpenFont("assets/Fonts/IMPRISHA.ttf", 20);
+    Imprisha = TTF_OpenFont("assets/imprisha.ttf", 20);
     Test(game->window, game->renderer, ERROR, Imprisha == NULL, "TTF_OpenFont", __FILE__, __LINE__-1);
 
     Text Dev;
@@ -30,23 +31,30 @@ void update_in_menu( Game* game) {
     printText( game->window, game->renderer, &Dev, 5, SIZE_Y - Dev.RectText->h - 5);
     freeText(game->window, game->renderer, &Dev);
 
+    Text Version;
+    char version_buffer[16];
+    snprintf(version_buffer, 16, "v %d.%d.%d", VERSION_MAJOR, VERSION_MINOR, VERSION_PATCH);
+    loadText( game->window, game->renderer, version_buffer, Imprisha, &Version, game->color, SHADED, &game->background);
+    printText( game->window, game->renderer, &Version, SIZE_X - Version.RectText->w -5, SIZE_Y - Version.RectText->h - 5);
+    freeText(game->window, game->renderer, &Version);
+
     TTF_CloseFont(Imprisha);
 
-    TTF_Font* calibri = TTF_OpenFont("assets/Fonts/calibrib.ttf", 30);
+    TTF_Font* calibri = TTF_OpenFont("assets/calibrib.ttf", 30);
     Test(game->window, game->renderer, ERROR, calibri == NULL, "TTF_OpenFont", __FILE__, __LINE__-1);
 
     SDL_Color white = {255, 255, 255, SDL_ALPHA_OPAQUE};
     SDL_Color blue = BLUE;
 
-    game->tabButton[BUTTON_SOLO] = allocButtonText( game->window, game->renderer, SIZE_X/1.3, SIZE_Y/8, "SOLO", calibri, white, blue);
-    printButton( game->window, game->renderer, game->tabButton[BUTTON_SOLO], SIZE_X/2 - game->tabButton[BUTTON_SOLO]->rectButton.w/2, SIZE_Y/3);
+    game->tabButton[BUTTON_SOLO] = allocButtonText( game->window, game->renderer, (int)(SIZE_X/1.3), SIZE_Y/8, "SOLO", calibri, white, blue);
+    printButton( game->window, game->renderer, game->tabButton[BUTTON_SOLO], (int)(SIZE_X/2) - game->tabButton[BUTTON_SOLO]->rectButton.w/2, SIZE_Y/3);
 
-    game->tabButton[BUTTON_MULTIPLAYER] = allocButtonText( game->window, game->renderer, SIZE_X/1.3, SIZE_Y/8, "MULTI-JOUEURS", calibri, white, blue);
-    printButton( game->window, game->renderer, game->tabButton[BUTTON_MULTIPLAYER], SIZE_X/2 - game->tabButton[BUTTON_MULTIPLAYER]->rectButton.w/2, game->tabButton[BUTTON_SOLO]->rectButton.y
+    game->tabButton[BUTTON_MULTIPLAYER] = allocButtonText( game->window, game->renderer, (int)(SIZE_X/1.3), SIZE_Y/8, "MULTI-JOUEURS", calibri, white, blue);
+    printButton( game->window, game->renderer, game->tabButton[BUTTON_MULTIPLAYER], (int)(SIZE_X/2) - game->tabButton[BUTTON_MULTIPLAYER]->rectButton.w/2, game->tabButton[BUTTON_SOLO]->rectButton.y
      + game->tabButton[BUTTON_SOLO]->rectButton.h + 20);
 
-    game->tabButton[BUTTON_EXIT] = allocButtonText( game->window, game->renderer, SIZE_X/1.3, SIZE_Y/8, "QUITTER", calibri, white, blue);
-    printButton( game->window, game->renderer, game->tabButton[BUTTON_EXIT], SIZE_X/2 - game->tabButton[BUTTON_EXIT]->rectButton.w/2, game->tabButton[BUTTON_MULTIPLAYER]->rectButton.y
+    game->tabButton[BUTTON_EXIT] = allocButtonText( game->window, game->renderer, (int)(SIZE_X/1.3), SIZE_Y/8, "QUITTER", calibri, white, blue);
+    printButton( game->window, game->renderer, game->tabButton[BUTTON_EXIT], (int)(SIZE_X/2) - game->tabButton[BUTTON_EXIT]->rectButton.w/2, game->tabButton[BUTTON_MULTIPLAYER]->rectButton.y
      + game->tabButton[BUTTON_MULTIPLAYER]->rectButton.h + 20);
 
 

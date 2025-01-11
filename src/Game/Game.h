@@ -10,35 +10,29 @@
 #define STRUCT_GAME_INCLUDED
 typedef struct Game
 {
-    // 40 Octets 
+
     Player player1;
     Player player2;
 
-    // x Octets
     Button* tabButton[N_BUTTON]; 
 
-    // 9 Octets
-    int_fast8_t grille[LEN_GRILLE][LEN_GRILLE];
+    int grille[LEN_GRILLE][LEN_GRILLE];
 
-    // 8 Octets
     SDL_Window* window;
     SDL_Renderer* renderer;
 
-    // 4 Octets
     SDL_Color color;
     SDL_Color background;
 
-    // 2 Octets
-    uint_fast16_t sizeNameJ1;
-    uint_fast16_t sizeNameJ2;
+    int sizeNameJ1;
+    int sizeNameJ2;
 
-    // 1 Octet
     tabBool boolMenu;
-    int_fast8_t startPlayer;
-    int_fast8_t playerActif;
-    int_fast8_t modeFinish;
-    uint_fast8_t Niveau;
-    uint_fast8_t startNiveau;
+    int startPlayer;
+    int playerActif;
+    int modeFinish;
+    int Niveau;
+    int startNiveau;
     bool NivAuto;
 } Game;
 
@@ -53,7 +47,7 @@ typedef struct Game
 Game initGame(const char * PATH_SaveFolder);
 void freeGame( Game* game, const char * PATH_SaveFolder);
 void update( Game* game);
-bool getClick( Game* game, const uint_fast16_t clickX, const uint_fast16_t clickY);
+bool getClick( Game* game, const int clickX, const int clickY);
 
 #endif // !GAME_H_INCLUDED
 #endif // FUNC_GAME

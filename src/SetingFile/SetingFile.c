@@ -35,14 +35,14 @@ void loadSeting(SDL_Window* window, SDL_Renderer* renderer, const char* PATH, SD
     FILE* file = fopen(PATH, "rb");
 
     if (file != NULL) {
-        Test( window, renderer, ERROR, fread(&color->r, sizeof(uint8_t), 1, file) == 0, "fread", __FILE__, __LINE__);
-        Test( window, renderer, ERROR, fread(&color->g, sizeof(uint8_t), 1, file) == 0, "fread", __FILE__, __LINE__);
-        Test( window, renderer, ERROR, fread(&color->b, sizeof(uint8_t), 1, file) == 0, "fread", __FILE__, __LINE__);
-        Test( window, renderer, ERROR, fread(&color->a, sizeof(uint8_t), 1, file) == 0, "fread", __FILE__, __LINE__);
-        Test( window, renderer, ERROR, fread(&background->r, sizeof(uint8_t), 1, file) == 0, "fread", __FILE__, __LINE__);
-        Test( window, renderer, ERROR, fread(&background->g, sizeof(uint8_t), 1, file) == 0, "fread", __FILE__, __LINE__);
-        Test( window, renderer, ERROR, fread(&background->b, sizeof(uint8_t), 1, file) == 0, "fread", __FILE__, __LINE__);
-        Test( window, renderer, ERROR, fread(&background->a, sizeof(uint8_t), 1, file) == 0, "fread", __FILE__, __LINE__);
+        Test( window, renderer, ERROR, fread(&color->r, sizeof(int), 1, file) == 0, "fread", __FILE__, __LINE__);
+        Test( window, renderer, ERROR, fread(&color->g, sizeof(int), 1, file) == 0, "fread", __FILE__, __LINE__);
+        Test( window, renderer, ERROR, fread(&color->b, sizeof(int), 1, file) == 0, "fread", __FILE__, __LINE__);
+        Test( window, renderer, ERROR, fread(&color->a, sizeof(int), 1, file) == 0, "fread", __FILE__, __LINE__);
+        Test( window, renderer, ERROR, fread(&background->r, sizeof(int), 1, file) == 0, "fread", __FILE__, __LINE__);
+        Test( window, renderer, ERROR, fread(&background->g, sizeof(int), 1, file) == 0, "fread", __FILE__, __LINE__);
+        Test( window, renderer, ERROR, fread(&background->b, sizeof(int), 1, file) == 0, "fread", __FILE__, __LINE__);
+        Test( window, renderer, ERROR, fread(&background->a, sizeof(int), 1, file) == 0, "fread", __FILE__, __LINE__);
         Test( window, renderer, ERROR, fclose(file) == EOF, "fclose", __FILE__, __LINE__);
     }
 }
@@ -61,14 +61,14 @@ void saveSeting(SDL_Window* window, SDL_Renderer* renderer, const char* PATH, co
     FILE* file = fopen(PATH, "wba");
     
     if (file != NULL) {
-        Test( window, renderer, ERROR, fwrite(&(color.r), sizeof(uint8_t), 1, file) == 0, "fwrite", __FILE__, __LINE__);
-        Test( window, renderer, ERROR, fwrite(&(color.g), sizeof(uint8_t), 1, file) == 0, "fwrite", __FILE__, __LINE__);
-        Test( window, renderer, ERROR, fwrite(&(color.b), sizeof(uint8_t), 1, file) == 0, "fwrite", __FILE__, __LINE__);
-        Test( window, renderer, ERROR, fwrite(&(color.a), sizeof(uint8_t), 1, file) == 0, "fwrite", __FILE__, __LINE__);
-        Test( window, renderer, ERROR, fwrite(&(background.r), sizeof(uint8_t), 1, file) == 0, "fwrite", __FILE__, __LINE__);
-        Test( window, renderer, ERROR, fwrite(&(background.g), sizeof(uint8_t), 1, file) == 0, "fwrite", __FILE__, __LINE__);
-        Test( window, renderer, ERROR, fwrite(&(background.b), sizeof(uint8_t), 1, file) == 0, "fwrite", __FILE__, __LINE__);
-        Test( window, renderer, ERROR, fwrite(&(background.a), sizeof(uint8_t), 1, file) == 0, "fwrite", __FILE__, __LINE__);
+        Test( window, renderer, ERROR, fwrite(&(color.r), sizeof(int), 1, file) == 0, "fwrite", __FILE__, __LINE__);
+        Test( window, renderer, ERROR, fwrite(&(color.g), sizeof(int), 1, file) == 0, "fwrite", __FILE__, __LINE__);
+        Test( window, renderer, ERROR, fwrite(&(color.b), sizeof(int), 1, file) == 0, "fwrite", __FILE__, __LINE__);
+        Test( window, renderer, ERROR, fwrite(&(color.a), sizeof(int), 1, file) == 0, "fwrite", __FILE__, __LINE__);
+        Test( window, renderer, ERROR, fwrite(&(background.r), sizeof(int), 1, file) == 0, "fwrite", __FILE__, __LINE__);
+        Test( window, renderer, ERROR, fwrite(&(background.g), sizeof(int), 1, file) == 0, "fwrite", __FILE__, __LINE__);
+        Test( window, renderer, ERROR, fwrite(&(background.b), sizeof(int), 1, file) == 0, "fwrite", __FILE__, __LINE__);
+        Test( window, renderer, ERROR, fwrite(&(background.a), sizeof(int), 1, file) == 0, "fwrite", __FILE__, __LINE__);
         Test( window, renderer, ERROR, fclose(file) == EOF, "fclose", __FILE__, __LINE__);
     }
 }
@@ -76,25 +76,24 @@ void saveSeting(SDL_Window* window, SDL_Renderer* renderer, const char* PATH, co
 char* createFolder(void) {
 
     #if defined(_WIN32) || defined(_WIN64)
-        const uint_fast8_t size_env = strlen(getenv("APPDATA"));
+        const int size_env = strlen(getenv("LOCALAPPDATA"));
         char *PATH = malloc(sizeof(char) * (size_env  + 21));
         Test(NULL, NULL, ERROR, PATH == NULL, "malloc", __FILE__, __LINE__);
 
-        strcpy(PATH, getenv("APPDATA"));
+        strcpy(PATH, getenv("LOCALAPPDATA"));
 
-        strcat(PATH, "/../LocalLow/Morpion");
+        strcat(PATH, "Morpion");
 
         mkdir(PATH);
 
     #elif defined(UNIX) || defined(__LINUX__)
-        const uint_fast8_t size_env = strlen(getenv("HOME"));
-        char *PATH = malloc(sizeof(char) * (size_env  + 9));
+        const size_t size_env = strlen(getenv("HOME"));
+        char *PATH = malloc(sizeof(char) * (size_env  + 22));
         Test(NULL, NULL, ERROR, PATH == NULL, "malloc", __FILE__, __LINE__);
 
         strcpy(PATH, getenv("HOME"));
 
-        strcat(PATH, "/.Morpion");
-        puts(PATH);
+        strcat(PATH, "/.local/share/Morpion");
 
         mkdir(PATH, S_IRWXO | S_IRWXG | S_IRWXU);
         

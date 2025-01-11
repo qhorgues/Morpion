@@ -1,7 +1,7 @@
 #include "Graphic.h"
 #include "../Test/Test.h"
 
-void pop_up( Game* game, const uint_fast16_t w, const uint_fast16_t h) {
+void pop_up( Game* game, const int w, const int h) {
     SDL_Rect back;
     back.x = 0;
     back.y = 0;

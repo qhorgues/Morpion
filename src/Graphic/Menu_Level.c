@@ -6,7 +6,7 @@
 
 void update_in_menu_level( Game* game) {
 
-    for(int_fast32_t i = 0; i < N_BUTTON; i++) {
+    for(int i = 0; i < N_BUTTON; i++) {
         if (game->tabButton[i] != NULL) {
             freeButton(game->window, game->renderer, game->tabButton[i]);
             free(game->tabButton[i]);
@@ -22,7 +22,7 @@ void update_in_menu_level( Game* game) {
 
     Test(game->window, game->renderer, FATAL_ERROR, TTF_Init() != 0, "TTF_Init", __FILE__, __LINE__);
 
-    TTF_Font* Imprisha = TTF_OpenFont("assets/Fonts/IMPRISHA.TTF", 70);
+    TTF_Font* Imprisha = TTF_OpenFont("assets/imprisha.ttf", 70);
     Test(game->window, game->renderer, ERROR, Imprisha == NULL, "TTF_OpenFont", __FILE__, __LINE__-1);
 
     Text Titre;
@@ -31,24 +31,24 @@ void update_in_menu_level( Game* game) {
     freeText(game->window, game->renderer, &Titre);
     TTF_CloseFont(Imprisha);
 
-    TTF_Font* calibri = TTF_OpenFont("assets/Fonts/calibrib.ttf", 30);
+    TTF_Font* calibri = TTF_OpenFont("assets/calibrib.ttf", 30);
     Test(game->window, game->renderer, ERROR, calibri == NULL, "TTF_OpenFont", __FILE__, __LINE__-1);
 
     const SDL_Color white = {255, 255, 255, SDL_ALPHA_OPAQUE};
     const SDL_Color blue = BLUE;
 
-    game->tabButton[BUTTON_EASY] = allocButtonText( game->window, game->renderer, SIZE_X/1.3, SIZE_Y/8, "FACILE", calibri, white, blue);
-    printButton( game->window, game->renderer, game->tabButton[BUTTON_EASY], SIZE_X/2 - game->tabButton[BUTTON_EASY]->rectButton.w/2, SIZE_Y/4);
+    game->tabButton[BUTTON_EASY] = allocButtonText( game->window, game->renderer, (int)(SIZE_X/1.3), (int)(SIZE_Y/8), "FACILE", calibri, white, blue);
+    printButton( game->window, game->renderer, game->tabButton[BUTTON_EASY], (int)(SIZE_X/2) - game->tabButton[BUTTON_EASY]->rectButton.w/2, SIZE_Y/4);
 
-    game->tabButton[BUTTON_MEDIUM] = allocButtonText( game->window, game->renderer, SIZE_X/1.3, SIZE_Y/8, "MOYEN", calibri, white, blue);
-    printButton( game->window, game->renderer, game->tabButton[BUTTON_MEDIUM], SIZE_X/2 - game->tabButton[BUTTON_MEDIUM]->rectButton.w/2, game->tabButton[BUTTON_EASY]->rectButton.y
+    game->tabButton[BUTTON_MEDIUM] = allocButtonText( game->window, game->renderer, (int)(SIZE_X/1.3), (int)(SIZE_Y/8), "MOYEN", calibri, white, blue);
+    printButton( game->window, game->renderer, game->tabButton[BUTTON_MEDIUM], (int)(SIZE_X/2) - game->tabButton[BUTTON_MEDIUM]->rectButton.w/2, game->tabButton[BUTTON_EASY]->rectButton.y
      + game->tabButton[BUTTON_EASY]->rectButton.h + 20);
 
-    game->tabButton[BUTTON_HARD] = allocButtonText( game->window, game->renderer, SIZE_X/1.3, SIZE_Y/8, "DIFFICILE", calibri, white, blue);
-    printButton( game->window, game->renderer, game->tabButton[BUTTON_HARD], SIZE_X/2 - game->tabButton[BUTTON_HARD]->rectButton.w/2, game->tabButton[BUTTON_MEDIUM]->rectButton.y
+    game->tabButton[BUTTON_HARD] = allocButtonText( game->window, game->renderer, (int)(SIZE_X/1.3), (int)(SIZE_Y/8), "DIFFICILE", calibri, white, blue);
+    printButton( game->window, game->renderer, game->tabButton[BUTTON_HARD], (int)(SIZE_X/2) - game->tabButton[BUTTON_HARD]->rectButton.w/2, game->tabButton[BUTTON_MEDIUM]->rectButton.y
      + game->tabButton[BUTTON_MEDIUM]->rectButton.h + 20);
 
-    game->tabButton[BUTTON_RETURN] = allocButtonText( game->window, game->renderer, SIZE_X/2.2, SIZE_Y/8, "RETOUR", calibri, white, blue);
+    game->tabButton[BUTTON_RETURN] = allocButtonText( game->window, game->renderer, (int)(SIZE_X/2.2), (int)(SIZE_Y/8), "RETOUR", calibri, white, blue);
     printButton( game->window, game->renderer, game->tabButton[BUTTON_RETURN], game->tabButton[BUTTON_HARD]->rectButton.x, game->tabButton[BUTTON_HARD]->rectButton.y
      + game->tabButton[BUTTON_HARD]->rectButton.h + 20);
 
@@ -97,7 +97,7 @@ static void clickButtonLevel(Game* game) {
     update( game);
 }
 
-void clickLevel(Game* game, const uint_fast16_t clickX, const uint_fast16_t clickY) {
+void clickLevel(Game* game, const int clickX, const int clickY) {
     if (clickButton(game->tabButton[BUTTON_EASY], clickX, clickY)) {
         game->Niveau = 2;
         game->startNiveau = 2;
@@ -119,7 +119,7 @@ void clickLevel(Game* game, const uint_fast16_t clickX, const uint_fast16_t clic
     } else if (clickButton(game->tabButton[BUTTON_AUTO], clickX, clickY)) {
         Test(game->window, game->renderer, FATAL_ERROR, TTF_Init() != 0, "TTF_Init", __FILE__, __LINE__);
 
-        TTF_Font* calibri = TTF_OpenFont("assets/Fonts/calibrib.ttf", OF_SET/2);
+        TTF_Font* calibri = TTF_OpenFont("assets/calibrib.ttf", OF_SET/2);
         Test(game->window, game->renderer, ERROR, calibri == NULL, "TTF_OpenFont", __FILE__, __LINE__-1);
 
         freeButton( game->window, game->renderer, game->tabButton[BUTTON_AUTO]);

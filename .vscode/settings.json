@@ -21,7 +21,9 @@
         "stdint-gcc.h": "c",
         "winddi.h": "c",
         "errno.h": "c",
-        "type_traits": "c"
+        "type_traits": "c",
+        "cstdlib": "c",
+        "chrono": "c"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }

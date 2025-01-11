@@ -30,7 +30,7 @@ void changeColor( Game* game) {
  * \param a Un entier de 0 a 255 pour la transparence
  * \return SDL_Color 
  */
-SDL_Color rgba_to_color( const uint_fast8_t r, const uint_fast8_t g, const uint_fast8_t b, const uint_fast8_t a) {
+SDL_Color rgba_to_color( const uint8_t r, const uint8_t g, const uint8_t b, const uint8_t a) {
     SDL_Color color;
     color.r = r;
     color.g = g;

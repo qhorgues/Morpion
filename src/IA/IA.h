@@ -6,13 +6,13 @@
 #include "../Game/Game.h"
 
 typedef struct Coor {
-    uint_fast8_t x;
-    uint_fast8_t y;
+    int x;
+    int y;
 } Coor;
 
 #ifndef STRUCT_COOR
-int_fast32_t IA( Game* game, const int_fast8_t joueurT, const uint_fast8_t Profondeur, Coor* bestCoup);
-int_fast32_t f_score(int_fast8_t (*grille)[LEN_GRILLE] , const char ID, Coor * dpt, Coor * arv);
+int IA( Game* game, const int joueurT, const int Profondeur, Coor* bestCoup);
+int f_score(int (*grille)[LEN_GRILLE] , const int ID, Coor * dpt, Coor * arv);
 bool testWin(Game* game);
 void ouverture(Coor* coupOpen);
 #endif

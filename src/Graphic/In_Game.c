@@ -11,7 +11,7 @@
  * \param nb Un nombre
  * \return le nombre de caractere du nombre
  */
-static size_t intLen(int_fast32_t nb) {
+static size_t intLen(int nb) {
     size_t count = 1;
     while (nb > 1) {
         nb /= 10;
@@ -30,14 +30,14 @@ static size_t intLen(int_fast32_t nb) {
  * 
  * \return Une structure Text
  */
-static Text createTextScore( const Game* game, TTF_Font* font, const char* txt, const int_fast32_t score) {
+static Text createTextScore( const Game* game, TTF_Font* font, const char* txt, const int score) {
     
     size_t lenScore = strlen(txt) + 3 + intLen(score);
     char* strScore = malloc( (lenScore + 1) * sizeof(char));
     #if defined(_WIN32) || defined(_WIN64)
         Test(game->window, game->renderer, ERROR, sprintf(strScore, "%s : %d", txt, score) == EOF, "sprintf", __FILE__, __LINE__);
     #else
-        Test(game->window, game->renderer, ERROR, sprintf(strScore, "%s : %ld", txt, score) == EOF, "sprintf", __FILE__, __LINE__);
+        Test(game->window, game->renderer, ERROR, sprintf(strScore, "%s : %d", txt, score) == EOF, "sprintf", __FILE__, __LINE__);
     #endif
     strScore[lenScore] = '\0';
     
@@ -58,7 +58,7 @@ void update_in_game( Game* game) {
     // Score 1
     Test(game->window, game->renderer, FATAL_ERROR, TTF_Init() != 0, "TTF_Init", __FILE__, __LINE__);
 
-    TTF_Font* calibri = TTF_OpenFont("assets/Fonts/calibrib.ttf", OF_SET/2);
+    TTF_Font* calibri = TTF_OpenFont("assets/calibrib.ttf", OF_SET/2);
     Test(game->window, game->renderer, ERROR, calibri == NULL, "TTF_OpenFont", __FILE__, __LINE__-1);
 
     Text textScore1 = createTextScore(game, calibri, game->player1.Name, game->player1.score);

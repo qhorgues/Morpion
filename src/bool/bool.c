@@ -3,7 +3,7 @@
 #include <math.h>
 #include <stdint.h>
 
-typedef uint_fast8_t tabBool;
+typedef uint8_t tabBool;
 
 
 /**
@@ -13,7 +13,7 @@ typedef uint_fast8_t tabBool;
  * \param position La position dans le tableau
  * \return true ou false
  */
-bool get_tabBool(const tabBool tab, const int_fast32_t position)
+bool get_tabBool(const tabBool tab, const int position)
 {
     return (tab & (1 << position)) != 0;
 }
@@ -26,8 +26,8 @@ bool get_tabBool(const tabBool tab, const int_fast32_t position)
  * \param value la nouvelle valeur du booleen
  * \return Le tableau modifie
  */
-tabBool set_tabBool(tabBool tab, const int_fast32_t position, const bool value)
+tabBool set_tabBool(tabBool tab, const int position, const bool value)
 {
-    tab ^= (get_tabBool(tab, position) ^ value) << position;
+    tab ^= (tabBool)((get_tabBool(tab, position) ^ value) << position);
     return tab;
 }

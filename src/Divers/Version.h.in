@@ -1,0 +1,8 @@
+#ifndef VERSION_H
+#define VERSION_H
+
+#define VERSION_MAJOR @Morpion_VERSION_MAJOR@
+#define VERSION_MINOR @Morpion_VERSION_MINOR@
+#define VERSION_PATCH @Morpion_VERSION_PATCH@
+
+#endif

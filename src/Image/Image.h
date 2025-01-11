@@ -36,7 +36,7 @@ void loadImage_BMP(SDL_Window* window, SDL_Renderer* renderer, const char *PATH,
 #include <SDL2/SDL_image.h>
 void loadImage(SDL_Window* window, SDL_Renderer* renderer, const char *PATH, IMG *image);
 
-void printImage(SDL_Window* window, SDL_Renderer* renderer, IMG * image, const uint_fast16_t x, const uint_fast16_t y, const uint_fast16_t w, const uint_fast16_t h); // Afficher l'image
+void printImage(SDL_Window* window, SDL_Renderer* renderer, IMG * image, const int x, const int y, const int w, const int h); // Afficher l'image
 void freeImage(SDL_Window* window, SDL_Renderer* renderer, IMG *image); // Liberer l'image en memoire
 
 #endif // FUNC_IMAGE

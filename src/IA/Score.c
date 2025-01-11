@@ -1,7 +1,7 @@
 #include "IA.h"
 #include "../constante.h"
 
-static int_fast32_t testScore(int_fast32_t score, int_fast32_t maxScore) {
+static int testScore(int score, int maxScore) {
     if (score == 3) {  
         score = 100;
     }
@@ -14,14 +14,14 @@ static int_fast32_t testScore(int_fast32_t score, int_fast32_t maxScore) {
     return maxScore;
 }
 
-int_fast32_t f_score(int_fast8_t (*grille)[LEN_GRILLE] , const char ID, Coor * dpt, Coor * arv) {
-    int_fast32_t score = 0;
-    int_fast32_t MaxScore = 0;
-    char JoueurAdverse = ID*-1;
+int f_score(int (*grille)[LEN_GRILLE] , const int ID, Coor * dpt, Coor * arv) {
+    int score = 0;
+    int MaxScore = 0;
+    int JoueurAdverse = ID*-1;
 
     // Tester les lignes
-    for (int_fast32_t i = 0; i < 3; i++) {
-        for (int_fast32_t j = 0; j < 3; j++) {
+    for (unsigned int i = 0; i < 3; i++) {
+        for (unsigned int j = 0; j < 3; j++) {
             if (ID == grille[i][j]) {
                 score++;
             } else if (JoueurAdverse == grille[i][j]) {
@@ -29,19 +29,19 @@ int_fast32_t f_score(int_fast8_t (*grille)[LEN_GRILLE] , const char ID, Coor * d
             }
         }
         MaxScore = testScore(score, MaxScore);
-        if (score >= 3 && dpt != ((void*)0) && arv != ((void*)0)) {
+        if (score >= 3 && dpt != NULL && arv != NULL) {
             dpt->x = 0;
-            dpt->y = i;
+            dpt->y = (int)i;
             arv->x = 2;
-            arv->y = i;
+            arv->y = (int)i;
             //return MaxScore;
         }
         score = 0;
     }   
     
     // Tester les colones
-    for (int_fast32_t i = 0; i < 3; i++) {
-        for (int_fast32_t j = 0; j < 3; j++) {
+    for (unsigned int i = 0; i < 3; i++) {
+        for (unsigned int j = 0; j < 3; j++) {
             if (ID == grille[j][i]) {
                 score++;
             } else if (JoueurAdverse == grille[j][i]) {
@@ -49,10 +49,10 @@ int_fast32_t f_score(int_fast8_t (*grille)[LEN_GRILLE] , const char ID, Coor * d
             }
         }
         MaxScore = testScore(score, MaxScore);
-        if (score >= 3 && dpt != ((void*)0) && arv != ((void*)0)) {
-            dpt->x = i;
+        if (score >= 3 && dpt != NULL && arv != NULL) {
+            dpt->x = (int)i;
             dpt->y = 0;
-            arv->x = i;
+            arv->x = (int)i;
             arv->y = 2;
             //return MaxScore;
         }
@@ -60,7 +60,7 @@ int_fast32_t f_score(int_fast8_t (*grille)[LEN_GRILLE] , const char ID, Coor * d
     }   
     
     // tester la diago 1 (L-> R)
-    for (int_fast32_t i = 0; i < 3; i++) {
+    for (unsigned int i = 0; i < 3; i++) {
         if (ID == grille[i][i]) {
             score++;
         } else if (JoueurAdverse == grille[i][i]) {
@@ -68,7 +68,7 @@ int_fast32_t f_score(int_fast8_t (*grille)[LEN_GRILLE] , const char ID, Coor * d
         }
     }
     MaxScore = testScore(score, MaxScore);
-    if (score >= 3 && dpt != ((void*)0) && arv != ((void*)0)) {
+    if (score >= 3 && dpt != NULL && arv != NULL) {
         dpt->x = 0;
         dpt->y = 0;
         arv->x = 2;
@@ -78,17 +78,17 @@ int_fast32_t f_score(int_fast8_t (*grille)[LEN_GRILLE] , const char ID, Coor * d
     score = 0;
     
     // tester la diago 2 (R-> L)
-    int_fast32_t i = 0;
-    for (int_fast32_t j = 2; j > -1; j--) {
-        if (ID == grille[i][j]) {
+    unsigned int i = 0;
+    for (unsigned int j = 3; j > 0; j--) {
+        if (ID == grille[i][j-1]) {
             score++;
-        } else if (JoueurAdverse == grille[i][j]) {
+        } else if (JoueurAdverse == grille[i][j-1]) {
             score =-10;
         }
-        i += 1;
+        i++;
     }
     MaxScore = testScore(score, MaxScore);
-    if (score >= 3 && dpt != ((void*)0) && arv != ((void*)0)) {
+    if (score >= 3 && dpt != NULL && arv != NULL) {
             dpt->x = 2;
             dpt->y = 0;
             arv->x = 0;

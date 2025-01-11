@@ -13,8 +13,8 @@ enum bool
 #ifdef TAB_BOOL
 #ifndef TAB_BOOL_INCLUDED
 #define TAB_BOOL_INCLUDED
-typedef uint_fast8_t tabBool;
-bool get_tabBool(const tabBool tab, const int_fast32_t position);
-tabBool set_tabBool(tabBool tab, const int_fast32_t position, const bool value);
+typedef uint8_t tabBool;
+bool get_tabBool(const tabBool tab, const int position);
+tabBool set_tabBool(tabBool tab, const int position, const bool value);
 #endif // !TAB_BOOL_INCLUDED
 #endif // TAB_BOOL

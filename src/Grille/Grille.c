@@ -19,11 +19,11 @@
  * \return true 
  * \return false 
  */
-bool grilleVide(int_fast8_t (*grille)[LEN_GRILLE])
+bool grilleVide(int (*grille)[LEN_GRILLE])
 {
-    for (int_fast32_t i = 0; i < LEN_GRILLE; i++)
+    for (int i = 0; i < LEN_GRILLE; i++)
     {
-        for (int_fast32_t j = 0; j < LEN_GRILLE; j++)
+        for (int j = 0; j < LEN_GRILLE; j++)
         {
             if (grille[i][j] != 0)
             {
@@ -42,11 +42,11 @@ bool grilleVide(int_fast8_t (*grille)[LEN_GRILLE])
  * \return true 
  * \return false 
  */
-bool grillePlein(int_fast8_t (*grille)[LEN_GRILLE])
+bool grillePlein(int (*grille)[LEN_GRILLE])
 {
-    for (int_fast32_t i = 0; i < LEN_GRILLE; i++)
+    for (int i = 0; i < LEN_GRILLE; i++)
     {
-        for (int_fast32_t j = 0; j < LEN_GRILLE; j++)
+        for (int j = 0; j < LEN_GRILLE; j++)
         {
             if (grille[i][j] == 0)
             {
@@ -62,11 +62,11 @@ bool grillePlein(int_fast8_t (*grille)[LEN_GRILLE])
  * 
  * \param grille la grille a reinitiliser
  */
-void resetGrille(int_fast8_t (*grille)[LEN_GRILLE])
+void resetGrille(int (*grille)[LEN_GRILLE])
 {
-    for (int_fast32_t i = 0; i < LEN_GRILLE; i++)
+    for (int i = 0; i < LEN_GRILLE; i++)
     {
-        for (int_fast32_t j = 0; j < LEN_GRILLE; j++)
+        for (int j = 0; j < LEN_GRILLE; j++)
         {
             grille[j][i] = 0;
         }
@@ -79,7 +79,7 @@ void resetGrille(int_fast8_t (*grille)[LEN_GRILLE])
  * \param game Un pointeur sur la structure du jeu
  * \param w La largeur des lignes de la grille
  */
-void printGrille( Game *game, const uint_fast8_t w)
+void printGrille( Game *game, const int w)
 {
     Test(game->window, game->renderer, WARNING,
          SDL_SetRenderDrawColor(game->renderer, game->background.r, game->background.g, game->background.b, game->background.a),
@@ -91,7 +91,7 @@ void printGrille( Game *game, const uint_fast8_t w)
          SDL_SetRenderDrawColor(game->renderer, game->color.r, game->color.g, game->color.b, game->color.a),
          "SDL_SetRenderDrawColor", __FILE__, __LINE__ - 1);
 
-    for (int_fast32_t i = 1; i < 3; i++)
+    for (int i = 1; i < 3; i++)
     {
         SDL_Rect ligne;
         ligne.x = i * (SIZE_X / 3) - (w / 2);
@@ -100,7 +100,7 @@ void printGrille( Game *game, const uint_fast8_t w)
         ligne.w = w;
         Test(game->window, game->renderer, WARNING, SDL_RenderFillRect(game->renderer, &ligne) != 0, "SDL_RenderFillRect", __FILE__, __LINE__);
     }
-    for (int_fast32_t i = 1; i < 3; i++)
+    for (int i = 1; i < 3; i++)
     {
         SDL_Rect ligne;
         ligne.x = 0;
@@ -119,9 +119,9 @@ void printGrille( Game *game, const uint_fast8_t w)
 
     Test(game->window, game->renderer, FATAL_ERROR, IMG_Init(IMG_INIT_PNG) == 0, "IMG_Init", __FILE__, __LINE__);
 
-    for (int_fast32_t i = 0; i < LEN_GRILLE; i++)
+    for (int i = 0; i < LEN_GRILLE; i++)
     {
-        for (int_fast32_t j = 0; j < LEN_GRILLE; j++)
+        for (int j = 0; j < LEN_GRILLE; j++)
         {
             if (game->grille[i][j] == 1)
             {
@@ -129,7 +129,7 @@ void printGrille( Game *game, const uint_fast8_t w)
                 {
                     SymJ1 = malloc(sizeof(IMG));
                     Test(game->window, game->renderer, ERROR, SymJ1 == NULL, "malloc", __FILE__, __LINE__ - 1);
-                    loadImage(game->window, game->renderer, "assets/Images/Croix.png", SymJ1);
+                    loadImage(game->window, game->renderer, "assets/Croix.png", SymJ1);
                 }
                 printImage(game->window, game->renderer, SymJ1, j * (SIZE_X / 3) + ((SIZE_X / 3 - SIZE_X / 4) / 2),
                            i * (SIZE_X / 3) + OF_SET + ((SIZE_X / 3 - SIZE_X / 4) / 2), AUTO, AUTO);
@@ -140,7 +140,7 @@ void printGrille( Game *game, const uint_fast8_t w)
                 {
                     SymJ2 = malloc(sizeof(IMG));
                     Test(game->window, game->renderer, ERROR, SymJ2 == NULL, "malloc", __FILE__, __LINE__ - 1);
-                    loadImage(game->window, game->renderer, "assets/Images/Rond.png", SymJ2);
+                    loadImage(game->window, game->renderer, "assets/Rond.png", SymJ2);
                 }
                 printImage(game->window, game->renderer, SymJ2, j * (SIZE_X / 3) + ((SIZE_X / 3 - SIZE_X / 4) / 2),
                            i * (SIZE_X / 3) + OF_SET + ((SIZE_X / 3 - SIZE_X / 4) / 2), AUTO, AUTO);
@@ -171,12 +171,12 @@ void printGrille( Game *game, const uint_fast8_t w)
  * 
  * \return retourne 0 si ca marche sinon 1
  */
-bool addGrille( Game *game, const uint_fast16_t clickX, const uint_fast16_t clickY)
+bool addGrille( Game *game, const int clickX, const int clickY)
 {
     if (clickY >= OF_SET && clickY <= SIZE_Y - OF_SET)
     {
-        uint_fast16_t y = (clickY - OF_SET) / (SIZE_X / 3);
-        uint_fast16_t x = clickX / (SIZE_X / 3);
+        int y = (clickY - OF_SET) / (SIZE_X / 3);
+        int x = clickX / (SIZE_X / 3);
         if (game->grille[y][x] == 0)
         {
             game->grille[y][x] = game->playerActif;
@@ -185,8 +185,8 @@ bool addGrille( Game *game, const uint_fast16_t clickX, const uint_fast16_t clic
             Test(game->window, game->renderer, FATAL_ERROR, IMG_Init(IMG_INIT_PNG) == 0, "IMG_Init", __FILE__, __LINE__);
 
             (game->playerActif == 1)
-                ? loadImage(game->window, game->renderer, "assets/Images/Croix.png", &Symbole)
-                : loadImage(game->window, game->renderer, "assets/Images/Rond.png", &Symbole);
+                ? loadImage(game->window, game->renderer, "assets/Croix.png", &Symbole)
+                : loadImage(game->window, game->renderer, "assets/Rond.png", &Symbole);
 
             printImage(game->window, game->renderer, &Symbole, x * (SIZE_X / 3) + ((SIZE_X / 3 - SIZE_X / 4) / 2),
                        y * (SIZE_X / 3) + OF_SET + ((SIZE_X / 3 - SIZE_X / 4) / 2), AUTO, AUTO);
@@ -202,7 +202,7 @@ bool addGrille( Game *game, const uint_fast16_t clickX, const uint_fast16_t clic
                 Coor bestCoup;
                 IA(game, game->playerActif, 1, &bestCoup);
                 game->grille[bestCoup.y][bestCoup.x] = game->playerActif;
-                loadImage(game->window, game->renderer, "assets/Images/Rond.png", &Symbole);
+                loadImage(game->window, game->renderer, "assets/Rond.png", &Symbole);
                 printImage(game->window, game->renderer, &Symbole, bestCoup.x * (SIZE_X / 3) + ((SIZE_X / 3 - SIZE_X / 4) / 2),
                        bestCoup.y * (SIZE_X / 3) + OF_SET + ((SIZE_X / 3 - SIZE_X / 4) / 2), AUTO, AUTO);
                 freeImage(game->window, game->renderer, &Symbole);

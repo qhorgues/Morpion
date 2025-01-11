@@ -77,7 +77,7 @@ void loadImage(SDL_Window* window, SDL_Renderer* renderer, const char *PATH, IMG
  * \param h la hauteur de l'image, AUTO pour la derniere hauteur utilise
  * 
  */
-void printImage(SDL_Window* window, SDL_Renderer* renderer, IMG * image, const uint_fast16_t x, const uint_fast16_t y, const uint_fast16_t w, const uint_fast16_t h) { // Afficher l'image sur le rendue
+void printImage(SDL_Window* window, SDL_Renderer* renderer, IMG * image, const int x, const int y, const int w, const int h) { // Afficher l'image sur le rendue
     Test( window, renderer, FATAL_ERROR, image == NULL, "access to unallocated space", __FILE__, __LINE__);
     Test( window, renderer, ERROR, image->RectImage == NULL, "access to unallocated space", __FILE__, __LINE__);
     Test( window, renderer, ERROR, image->texture == NULL, "access to unallocated space", __FILE__, __LINE__);

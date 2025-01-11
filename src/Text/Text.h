@@ -30,8 +30,8 @@ typedef struct Text
     SDL_Rect* RectText;
 } Text;
 
-void loadText(SDL_Window* window, SDL_Renderer* renderer, const char * text, TTF_Font * font, Text* text_ptr, const SDL_Color colorText, const uint_fast8_t Quality, const SDL_Color* background);
-void printText(SDL_Window* window, SDL_Renderer* renderer, Text* text, const uint_fast16_t x, const uint_fast16_t y);
+void loadText(SDL_Window* window, SDL_Renderer* renderer, const char * text, TTF_Font * font, Text* text_ptr, const SDL_Color colorText, const int Quality, const SDL_Color* background);
+void printText(SDL_Window* window, SDL_Renderer* renderer, Text* text, const int x, const int y);
 void freeText(SDL_Window* window, SDL_Renderer* renderer, Text *text);
 
 #endif // !TEXT_H_INCLUDED

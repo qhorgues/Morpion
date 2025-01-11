@@ -19,11 +19,11 @@
  * \param Name Le nom du joueur
  * \param Score Le score du joueur
  */
-void InitPlayer( const Game* game, Player* player, const char ID, const char * Name, const uint_fast8_t Score) {
+void InitPlayer( const Game* game, Player* player, const char ID, const char * Name, const int Score) {
     player->ID = ID;
     player->score = Score;
 
-    uint_fast16_t sizeName = strlen(Name);
+    size_t sizeName = strlen(Name);
     player->Name = malloc( ( sizeName + 1 ) * sizeof(char) );
     Test(game->window, game->renderer, WARNING, player->Name == NULL, "malloc", __FILE__, __LINE__);
     Test(game->window, game->renderer, WARNING, strcpy(player->Name, Name) == 0, "strcpy", __FILE__, __LINE__);
@@ -38,7 +38,7 @@ void InitPlayer( const Game* game, Player* player, const char ID, const char * N
  * \param Name Le nom du joueur
  */
 void changeName( const Game* game, Player* player, const char * Name) {
-    uint_fast16_t sizeName = strlen(Name);
+    size_t sizeName = strlen(Name);
     player->Name = realloc( player->Name, ( sizeName + 1 ) * sizeof(char) );
     Test(game->window, game->renderer, WARNING, player->Name == NULL, "realloc", __FILE__, __LINE__);
     Test(game->window, game->renderer, WARNING, strcpy(player->Name, Name) == NULL, "strcpy", __FILE__, __LINE__);
